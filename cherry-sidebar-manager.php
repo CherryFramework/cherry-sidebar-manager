@@ -7,7 +7,7 @@
  * Author:      Cherry Team
  * Author URI:  http://www.cherryframework.com/
  * Text Domain: cherry-sidebar-manager
- * License:     GPL-2.0+
+ * License:     GPL-3.0
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * Domain Path: /languages
  */
