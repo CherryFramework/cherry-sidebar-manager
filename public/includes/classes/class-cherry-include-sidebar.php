@@ -1,0 +1,109 @@
+<?php
+/**
+ *
+ * @package   Cherry_Include_Custom_Sidebar
+ * @author    Cherry Team
+ * @license   GPL-2.0+
+ * @link      http://www.cherryframework.com/
+ * @copyright 2015 Cherry Team
+ *
+ **/
+
+if ( !class_exists( 'Cherry_Include_Custom_Sidebar' ) ) {
+	class Cherry_Include_Custom_Sidebar {
+		/**
+		 * Holds the instances of this class.
+		 *
+		 * @since 1.0.0
+		 * @var   object
+		 */
+		private static $instance = null;
+		private $post_sidebars = null;
+
+
+		public function __construct() {
+			add_action( 'cherry_content', array( $this, 'set_custom_sidebar' ) );
+		}
+
+		/**
+		 * Set custom sidebar in global array $wp_registered_sidebars.
+		 *
+		 * @since 1.0.0
+		 */
+		public function set_custom_sidebar(){
+			global $wp_registered_sidebars;
+
+			$object_id = get_queried_object_id();
+			$this->post_sidebars = get_post_meta( $object_id, 'post_sidebar', true );
+
+			if ( is_array( $this->post_sidebars ) ) {
+
+				$Cherry_Custom_Sidebars_Methods = new Cherry_Custom_Sidebars_Methods();
+				$custom_sidebar_array           = $Cherry_Custom_Sidebars_Methods->get_custom_sidebar_array();
+				$wp_registered_sidebars         = array_merge( $wp_registered_sidebars, $custom_sidebar_array );
+
+				add_filter( 'cherry_get_main_sidebar', array($this, 'set_main_sidebar'), 1, 1);
+				add_filter( 'cherry_get_secondary_sidebar', array($this, 'set_secondary_sidebar'), 1, 1);
+			}
+		}
+
+		/**
+		 * Set main sidebar in variable cherry_get_main_sidebar.
+		 *
+		 * @since 1.0.0
+		 * @return string - main sidebar id
+		 */
+		public function set_main_sidebar( $sidebar ) {
+
+			if ( empty( $this->post_sidebars['post-main-sidebar'] ) ) {
+				return $sidebar;
+			}
+
+			$new_sidebar = $this->post_sidebars['post-main-sidebar'];
+
+			if ( $new_sidebar ) {
+				$sidebar = $new_sidebar;
+			}
+
+			return $sidebar;
+		}
+		/**
+		 * Set main sidebar in variable cherry_get_secondary_sidebar.
+		 *
+		 * @since 1.0.0
+		 * @return string - secondary sidebar id
+		 */
+		public function set_secondary_sidebar( $sidebar ) {
+
+			if ( empty( $this->post_sidebars['post-secondary-sidebar'] ) ) {
+				return $sidebar;
+			}
+
+			$new_sidebar = $this->post_sidebars['post-secondary-sidebar'];
+
+			if ( $new_sidebar ) {
+				$sidebar = $new_sidebar;
+			}
+
+			return $sidebar;
+		}
+		/**
+		 * Returns the instance.
+		 *
+		 * @since  1.0.0
+		 * @return object
+		 */
+		public static function get_instance() {
+
+			// If the single instance hasn't been set, set it now.
+			if ( null == self::$instance ) {
+				self::$instance = new self;
+			}
+
+			return self::$instance;
+		}
+	}
+
+	Cherry_Include_Custom_Sidebar::get_instance();
+}
+?>
