@@ -129,9 +129,9 @@ if ( !class_exists( 'Cherry_Custom_Sidebars' ) ) {
 
 				$Cherry_Plugin_Update = new Cherry_Plugin_Update();
 				$Cherry_Plugin_Update -> init( array(
-						'slug'				=> CHERRY_CUSTOM_SIDEBARS_SLUG,
 						'version'			=> CHERRY_CUSTOM_SIDEBARS_VERSION,
-						'repository_name'	=> 'cherry-sidebar-manager'
+						'slug'				=> CHERRY_CUSTOM_SIDEBARS_SLUG,
+						'repository_name'	=> CHERRY_CUSTOM_SIDEBARS_SLUG
 				));
 			}
 		}
