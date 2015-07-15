@@ -34,7 +34,7 @@ if ( !class_exists( 'Cherry_Include_Custom_Sidebar' ) ) {
 			global $wp_registered_sidebars;
 
 			$object_id = get_queried_object_id();
-			$this->post_sidebars = get_post_meta( $object_id, 'post_sidebar', true );
+			$this->post_sidebars = get_post_meta( apply_filters( 'cherry_sidebar_manager_object_id', $object_id ), 'post_sidebar', true );
 
 			if ( is_array( $this->post_sidebars ) ) {
 
