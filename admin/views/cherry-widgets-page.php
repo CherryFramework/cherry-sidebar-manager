@@ -14,7 +14,7 @@
 <?php add_thickbox(); ?>
 <div id="new-sidebar-manager-wrap" style="display:none;">
 	<div id="create-new-sidebar-manager">
-	<h3><?php _e( 'Created new custom sidebars.', 'cherry-sidebar-manager' ); ?></h3>
+	<h3><?php _e( 'Create new custom sidebar.', 'cherry-sidebar-manager' ); ?></h3>
 	<form id="cherry-sidebar-manager-form" class="cherry-ui-core" method="post">
 		<?php
 			$builder = new Cherry_Interface_Builder(array('pattern'=> ''));
@@ -31,7 +31,7 @@
 				'label' => __( 'Sidebar description:', 'cherry-sidebar-manager' )));
 
 			echo $output;
-			echo get_submit_button( __( 'Creating Sidebar', 'cherry-sidebar-manager' ), 'button-primary_', 'sidebar-manager-submit', false , 'style="float:right"');
+			echo get_submit_button( __( 'Create Sidebar', 'cherry-sidebar-manager' ), 'button-primary_', 'sidebar-manager-submit', false , 'style="float:right"');
 		?>
 		<div class="cherry-spinner-wordpress spinner-wordpress-type-1"><span class="cherry-inner-circle"></span></div>
 		<div id="cherry-error-message"><?php _e( 'Cannot add new custom sidebar', 'cherry-sidebar-manager' ); ?></div>
