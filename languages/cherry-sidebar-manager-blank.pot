@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: blank\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-21 13:44+0300\n"
+"POT-Creation-Date: 2015-07-30 17:06+0300\n"
 "PO-Revision-Date: 2015-04-06 06:14+0300\n"
 "Last-Translator: Vladimir Anokhin <ano.vladimir@gmail.com>\n"
 "Language-Team: Cherry Team <support@cherryframework.com>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "esc_attr__;_x:1,2c;_n:1,2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.2\n"
+"X-Generator: Poedit 1.8.3\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-SearchPath-0: .\n"
 
@@ -24,7 +24,7 @@ msgid "Post Sidebars"
 msgstr ""
 
 #: admin/views/cherry-sidebare-to-page.php:120
-msgid "Not select sidebar"
+msgid "Sidebar not selected"
 msgstr ""
 
 #: admin/views/cherry-sidebare-to-page.php:130
@@ -79,8 +79,8 @@ msgstr ""
 
 #: admin/views/cherry-widgets-page.php:57
 msgid ""
-"You can create custom sidebar yourself and enable if for any page or post. "
-"This can be done on page editing stage."
+"You can create a custom sidebar yourself and enable if for any page or "
+"post. This can be done on page editing stage."
 msgstr ""
 
 #: admin/views/cherry-widgets-page.php:58
