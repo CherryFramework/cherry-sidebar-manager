@@ -40,6 +40,8 @@ if ( !class_exists( 'Cherry_Include_Custom_Sidebar' ) ) {
 
 				$Cherry_Custom_Sidebars_Methods = new Cherry_Custom_Sidebars_Methods();
 				$custom_sidebar_array           = $Cherry_Custom_Sidebars_Methods->get_custom_sidebar_array();
+				unset($custom_sidebar_array['cherry-sidebar-manager-counter']);
+
 				$wp_registered_sidebars         = array_merge( $wp_registered_sidebars, $custom_sidebar_array );
 
 				add_filter( 'cherry_get_main_sidebar', array($this, 'set_main_sidebar'), 1, 1);
