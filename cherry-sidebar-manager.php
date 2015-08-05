@@ -3,7 +3,7 @@
  * Plugin Name: Cherry Sidebar Manager
  * Plugin URI:  http://www.cherryframework.com/
  * Description: A custom sidebars management plugin for WordPress.
- * Version:     1.0.1
+ * Version:     1.0.2-beta
  * Author:      Cherry Team
  * Author URI:  http://www.cherryframework.com/
  * Text Domain: cherry-sidebar-manager
