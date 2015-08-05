@@ -1,4 +1,15 @@
-# cherry-sidebar-manager
-Plug-in for creating and managing sadebar in Wordpress.
+# Cherry Sidebar Manager
+Plugin for creating and managing sidebar in WordPress.
+Сompatibility: *Cherry Framewokr v.4+
 
-__Сompatibility: *Cherry Framework v.4+*__
+##Change log##
+
+#### v1.0.2 ####
+
+* FIX: js-error on Customize page
+* UPD: Text to translate
+
+#### v1.0.1 ####
+
+* ADD: compatibility with wpml-plugin
+* UPD: Updater logic
