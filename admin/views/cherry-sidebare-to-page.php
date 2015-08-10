@@ -117,7 +117,7 @@ if ( !class_exists( 'Cherry_Custom_Sidebar' ) ) {
 							'label' => '',
 							'decsription' => '',
 							'value' => '',
-							'options' => array('' => __( 'Not select sidebar', 'cherry-sidebar-manager' ))
+							'options' => array('' => __( 'Sidebar not selected', 'cherry-sidebar-manager' ))
 							);
 
 			foreach ($wp_registered_sidebars as $sidebar => $sidebar_value) {
