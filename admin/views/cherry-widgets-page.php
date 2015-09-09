@@ -109,6 +109,8 @@
 <!-- Script changed widgets page dom. -->
 <script>
 	(function(){
+		'use strict';
+
 		var custemSitebarsWrapper = jQuery("#cherry-sidebar-manager-wrap"),
 			defoultSitebarsTitle = jQuery("#cherry-default-sidebars-title"),
 			defoultSitebarsDescription = jQuery("#cherry-default-sidebars-description"),

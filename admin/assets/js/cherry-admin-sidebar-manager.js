@@ -1,6 +1,5 @@
-;'use strict';
-
 (function(){
+	'use strict';
 
 /* Form Handling Module */
 	var formHandling = {
