@@ -3,12 +3,12 @@
  * Plugin Name: Cherry Sidebar Manager
  * Plugin URI:  http://www.cherryframework.com/
  * Description: A custom sidebars management plugin for WordPress.
- * Version:     1.0.2
+ * Version:     1.0.3
  * Author:      Cherry Team
  * Author URI:  http://www.cherryframework.com/
  * Text Domain: cherry-sidebar-manager
- * License:     GPL-3.0
- * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+ * License:     GPL-3.0+
+ * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
  * Domain Path: /languages
  */
 

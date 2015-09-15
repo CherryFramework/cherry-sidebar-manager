@@ -41,7 +41,7 @@ class Cherry_Custom_Sidebars_Admin {
 	 */
 	public function add_admin_assets( $hook_suffix ) {
 		if($hook_suffix === 'widgets.php'){
-			wp_register_script( 'cherry_admin_custom_sidebars_js', trailingslashit( CHERRY_CUSTOM_SIDEBARS_URI ) . 'admin/assets/js/cherry-admin-sidebar-manager.js', array( 'jquery' ), CHERRY_CUSTOM_SIDEBARS_VERSION );
+			wp_register_script( 'cherry_admin_custom_sidebars_js', trailingslashit( CHERRY_CUSTOM_SIDEBARS_URI ) . 'admin/assets/js/min/cherry-admin-sidebar-manager.min.js', array( 'jquery' ), CHERRY_CUSTOM_SIDEBARS_VERSION, true );
 			wp_register_style( 'cherry_admin_custom_sidebars_css', trailingslashit( CHERRY_CUSTOM_SIDEBARS_URI ) . 'admin/assets/css/cherry-admin-sidebar-manager.css', array(), CHERRY_CUSTOM_SIDEBARS_VERSION, 'all' );
 
 			$cherry_framework_objact = array( 'ajax_nonce_new_sidebar' => wp_create_nonce("new_custom_sidebar") , 'ajax_nonce_remove_sidebar' => wp_create_nonce("remove_custom_sidebar") );
@@ -49,7 +49,7 @@ class Cherry_Custom_Sidebars_Admin {
 
 	 		wp_enqueue_script( 'cherry_admin_custom_sidebars_js' );
 			wp_enqueue_style( 'cherry_admin_custom_sidebars_css' );
-		}else{
+		}elseif( strpos( $hook_suffix, 'post' ) !== false ){
 			wp_register_style( 'cherry-sidebar-manager-post-page', trailingslashit( CHERRY_CUSTOM_SIDEBARS_URI ) . 'admin/assets/css/cherry-sidebar-manager-post-page.css', array(), CHERRY_CUSTOM_SIDEBARS_VERSION, 'all' );
 			wp_enqueue_style( 'cherry-sidebar-manager-post-page' );
 		}
