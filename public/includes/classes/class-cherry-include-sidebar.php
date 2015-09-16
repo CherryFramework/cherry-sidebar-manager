@@ -57,11 +57,11 @@ if ( !class_exists( 'Cherry_Include_Custom_Sidebar' ) ) {
 		 */
 		public function set_main_sidebar( $sidebar ) {
 
-			if ( empty( $this->post_sidebars['post-main-sidebar'] ) ) {
+			if ( empty( $this->post_sidebars['cherry-post-main-sidebar'] ) ) {
 				return $sidebar;
 			}
 
-			$new_sidebar = $this->post_sidebars['post-main-sidebar'];
+			$new_sidebar = $this->post_sidebars['cherry-post-main-sidebar'];
 
 			if ( $new_sidebar ) {
 				$sidebar = $new_sidebar;
@@ -77,11 +77,11 @@ if ( !class_exists( 'Cherry_Include_Custom_Sidebar' ) ) {
 		 */
 		public function set_secondary_sidebar( $sidebar ) {
 
-			if ( empty( $this->post_sidebars['post-secondary-sidebar'] ) ) {
+			if ( empty( $this->post_sidebars['cherry-post-secondary-sidebar'] ) ) {
 				return $sidebar;
 			}
 
-			$new_sidebar = $this->post_sidebars['post-secondary-sidebar'];
+			$new_sidebar = $this->post_sidebars['cherry-post-secondary-sidebar'];
 
 			if ( $new_sidebar ) {
 				$sidebar = $new_sidebar;

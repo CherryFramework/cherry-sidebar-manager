@@ -8,6 +8,8 @@
 	 *
 	 * @since 1.0.0
 	 */
+
+	require_once( trailingslashit( CHERRY_CUSTOM_SIDEBARS_DIR ) . 'admin/views/ui-text/ui-text.php' );
 ?>
 
 <!-- Modal window to creating new custom sidebar. -->
@@ -16,23 +18,37 @@
 	<div id="create-new-sidebar-manager">
 	<h3><?php _e( 'Create new custom sidebar.', 'cherry-sidebar-manager' ); ?></h3>
 	<form id="cherry-sidebar-manager-form" class="cherry-ui-core" method="post">
-		<?php
-			$builder = new Cherry_Interface_Builder(array('pattern'=> ''));
-
-			$output = $builder->add_form_item( array(
-				'id' => 'sidebar-manager-name',
-				'type'=>'text',
-				'class'=>'required',
-				'label' => __( 'Sidebar name:', 'cherry-sidebar-manager' )));
-
-			$output .= $builder->add_form_item( array(
-				'id' => 'sidebar-manager-description',
-				'type'=>'text',
-				'label' => __( 'Sidebar description:', 'cherry-sidebar-manager' )));
-
-			echo $output;
-			echo get_submit_button( __( 'Create Sidebar', 'cherry-sidebar-manager' ), 'button-primary_', 'sidebar-manager-submit', false , 'style="float:right"');
-		?>
+		<div class="cherry-section">
+			<?php
+				$ui_text = new UI_Text(
+					array(
+						'id'			=> 'sidebar-manager-name',
+						'name'			=> 'sidebar-manager-name',
+						'class'			=> 'required',
+						'label'			=> __( 'Sidebar name:', 'cherry-sidebar-manager' )
+					)
+				);
+				echo $ui_text->render();
+			?>
+		</div>
+		<div class="cherry-section">
+			<?php
+				$ui_text = new UI_Text(
+					array(
+						'id'			=> 'sidebar-manager-description',
+						'name'			=> 'sidebar-manager-description',
+						'class'			=> 'required',
+						'label'			=> __( 'Sidebar description:', 'cherry-sidebar-manager' )
+					)
+				);
+				echo $ui_text->render();
+			?>
+		</div>
+		<div class="cherry-section">
+			<?php
+				echo get_submit_button( __( 'Create Sidebar', 'cherry-sidebar-manager' ), 'button-primary_', 'sidebar-manager-submit', false , 'style="float:right"');
+			?>
+		</div>
 		<div class="cherry-spinner-wordpress spinner-wordpress-type-1"><span class="cherry-inner-circle"></span></div>
 		<div id="cherry-error-message"><?php _e( 'Cannot add new custom sidebar', 'cherry-sidebar-manager' ); ?></div>
 	</form>

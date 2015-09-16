@@ -29,9 +29,7 @@ if ( !class_exists( 'Cherry_Custom_Sidebar' ) ) {
 		 */
 		public function __construct() {
 
-			if ( !class_exists( 'Cherry_Interface_Builder' ) ) {
-				return;
-			}
+			require_once( trailingslashit( CHERRY_CUSTOM_SIDEBARS_DIR ) . 'admin/views/ui-select/ui-select.php' );
 
 			// Add the `Layout` meta box on the 'add_meta_boxes' hook.
 			add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 10, 2 );
@@ -110,37 +108,40 @@ if ( !class_exists( 'Cherry_Custom_Sidebar' ) ) {
 
 			$select_sidebar = $this -> get_post_sidebar ( $post->ID );
 
-			$Cherry_Interface_Builder = new Cherry_Interface_Builder(array('class' => array('section' => 'cherry-sidebar-select')));
-			$select_arg = array(
-							'type' => 'select',
-							'title' => '',
-							'label' => '',
-							'decsription' => '',
-							'value' => '',
-							'options' => array('' => __( 'Sidebar not selected', 'cherry-sidebar-manager' ))
-							);
+			$sidebars = array(
+				'post-main-sidebar' => array(	'title' => __( 'Main Sidebar:', 'cherry-sidebar-manager' ),
+												'id' => 'cherry-post-main-sidebar',
+												'value' => is_array($select_sidebar) ? $select_sidebar['cherry-post-main-sidebar'] : '' ),
+
+				'post-secondary-sidebar' => array(	'title' => __( 'Secondary Sidebar:', 'cherry-sidebar-manager' ),
+													'id' => 'cherry-post-secondary-sidebar',
+													'value' => is_array($select_sidebar) ? $select_sidebar['cherry-post-secondary-sidebar'] : '')
+			);
+
+			$select_options =  array('' => __( 'Sidebar not selected', 'cherry-sidebar-manager' ) );
 
 			foreach ($wp_registered_sidebars as $sidebar => $sidebar_value) {
 				$sidebar_id = $sidebar_value['id'];
 				$sidebar_name = $sidebar_value['name'];
 
-				$select_arg['options'][$sidebar_id] = $sidebar_name;
+				$select_options[$sidebar_id] = $sidebar_name;
 			}
-			?>
-				<p><strong><?php _e( 'Main Sidebar:', 'cherry-sidebar-manager' )?></strong></p>
-			<?php
 
-			$select_arg['id'] = 'post-main-sidebar';
-			$select_arg['value'] = is_array($select_sidebar) ? $select_sidebar['post-main-sidebar'] : '' ;
-			echo $Cherry_Interface_Builder->add_form_item( $select_arg );
+			foreach ($sidebars as $sidebar => $sidebar_value) {
 
-			?>
-				<p><strong><?php _e( 'Secondary Sidebars:', 'cherry-sidebar-manager' )?></strong></p>
-			<?php
+				$output = '<p><strong>' . $sidebar_value[ 'title' ] . '</strong></p>';
 
-			$select_arg['id'] = 'post-secondary-sidebar';
-			$select_arg['value'] = is_array($select_sidebar) ? $select_sidebar['post-secondary-sidebar'] : '' ;
-			echo $Cherry_Interface_Builder->add_form_item( $select_arg );
+				$UI_Select = new UI_Select(
+					array(	'id' => $sidebar_value[ 'id' ],
+							'name' => $sidebar_value[ 'id' ],
+							'value' => $sidebar_value[ 'value' ],
+							'options' => $select_options )
+				);
+
+				$output .= $UI_Select->render();
+
+				echo $output;
+			};
 
 			?>
 				<p class="howto"><?php printf(__( 'You can choose page sidebars or create a new sidebar on %swidgets page%s .', 'cherry-sidebar-manager' ), '<a href="widgets.php" target="_blank" title="'.__( 'Widgets Page' ).'">', '</a>')?></p>
@@ -171,7 +172,7 @@ if ( !class_exists( 'Cherry_Custom_Sidebar' ) ) {
 			$meta_key = 'post_sidebar';
 
 			// Get the all submitted `page-sidebar-manager` data.
-			$sidebar_id = array('post-main-sidebar' => $_POST['cherry']['post-main-sidebar'], 'post-secondary-sidebar' => $_POST['cherry']['post-secondary-sidebar']);
+			$sidebar_id = array('cherry-post-main-sidebar' => $_POST['cherry-post-main-sidebar'], 'cherry-post-secondary-sidebar' => $_POST['cherry-post-secondary-sidebar']);
 
 			update_post_meta( $post_id, $meta_key, $sidebar_id );
 		}

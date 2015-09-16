@@ -9,6 +9,55 @@ if ( !defined( 'WPINC' ) ) {
  * @since 1.0.0
  */
 
+if( !function_exists( 'cherry_register_sidebar' ) ) {
+	function cherry_register_sidebar( $args ) {
+
+		// Set up some default sidebar arguments.
+		$defaults = array(
+			'id'            => '',
+			'name'          => '',
+			'description'   => '',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
+		);
+
+		/**
+		 * Filteras the default sidebar arguments
+		 *
+		 * @since 4.0.0
+		 * @param array $defaults
+		 */
+		$defaults = apply_filters( 'cherry_sidebar_defaults', $defaults );
+
+		// Parse the arguments.
+		$args = wp_parse_args( $args, $defaults );
+
+		/**
+		 * Filters the sidebar arguments.
+		 *
+		 * @since 4.0.0
+		 * @param array $args
+		 */
+		$args = apply_filters( 'cherry_sidebar_args', $args );
+
+		/**
+		 * Fires before execute WordPress `register_sidebar` function.
+		 *
+		 * @since 4.0.0
+		 * @param array $args
+		 */
+		do_action( 'cherry_register_sidebar', $args );
+
+		/**
+		 * Register the sidebar.
+		 * @link http://codex.wordpress.org/Function_Reference/register_sidebar
+		 */
+		return register_sidebar( $args );
+	}
+}
+
 add_action('wp_ajax_add_new_custom_sidebar', 'add_custom_sidebar' );
 
 function add_custom_sidebar() {
