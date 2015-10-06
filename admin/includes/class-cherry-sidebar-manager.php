@@ -23,7 +23,7 @@ if ( !class_exists( 'Cherry_Custom_Sidebars_Methods' ) ) {
 
 		function __construct() {
 			$this->current_theme = wp_get_theme();
-			$this->get_theme_option = get_option($this->current_theme, array());
+			$this->get_theme_option = get_option($this->current_theme . '_sidbars', array());
 		}
 
 		public function get_custom_sidebar_array() {
@@ -35,10 +35,13 @@ if ( !class_exists( 'Cherry_Custom_Sidebars_Methods' ) ) {
 			return $custom_sidebar_array;
 		}
 
-		public function set_custom_sidebar_array($new_custom_sidebar_array) {
+		public function set_custom_sidebar_array( $new_custom_sidebar_array ) {
 
 			$this->get_theme_option['custom_sidebar'] = $new_custom_sidebar_array;
-			update_option($this->current_theme, $this->get_theme_option);
+
+
+			var_dump($this->get_theme_option);
+			update_option($this->current_theme . '_sidbars', $this->get_theme_option);
 		}
 	}
 }
