@@ -39,8 +39,6 @@ if ( !class_exists( 'Cherry_Custom_Sidebars_Methods' ) ) {
 
 			$this->get_theme_option['custom_sidebar'] = $new_custom_sidebar_array;
 
-
-			var_dump($this->get_theme_option);
 			update_option($this->current_theme . '_sidbars', $this->get_theme_option);
 		}
 	}
