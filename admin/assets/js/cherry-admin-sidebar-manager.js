@@ -1,4 +1,4 @@
-(function(){
+(function($){
 	'use strict';
 
 /* Form Handling Module */
@@ -170,4 +170,4 @@
 			jQuery('.sidebar-name-arrow', _this).toggleClass('closed-arrow');
 		}
 	});
-}())
+}(jQuery))
