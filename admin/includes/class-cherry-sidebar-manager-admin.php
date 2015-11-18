@@ -94,7 +94,7 @@ class Cherry_Custom_Sidebars_Admin {
 		$sidebar_array_lengh = count( $cusotm_sidebar_array );
 
 		foreach( $cusotm_sidebar_array as $sidebar => $cusotm_sidebar ){
-			unset( $wp_registered_sidebars[$sidebar] );
+			unset( $wp_registered_sidebars[ $sidebar ] );
 		}
 	}
 
