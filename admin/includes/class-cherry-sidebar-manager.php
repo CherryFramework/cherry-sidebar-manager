@@ -1,5 +1,6 @@
 <?php
 /**
+ * Sidebar Manager methods list.
  *
  * @package   Cherry Sidebar Manager
  * @author    Cherry Team
@@ -23,7 +24,18 @@ if ( ! class_exists( 'Cherry_Custom_Sidebars_Methods' ) ) {
 	 */
 	class Cherry_Custom_Sidebars_Methods {
 
+		/**
+		 * Current theme name.
+		 *
+		 * @var string
+		 */
 		public $current_theme;
+
+		/**
+		 * Current sidebars theme settings.
+		 *
+		 * @var array
+		 */
 		public $get_theme_option;
 
 		/**
@@ -36,6 +48,12 @@ if ( ! class_exists( 'Cherry_Custom_Sidebars_Methods' ) ) {
 			$this->get_theme_option = get_option($this->current_theme . '_sidbars', array());
 		}
 
+		/**
+		 * Get current sidebars theme settings.
+		 *
+		 * @since 1.0.0
+		 * @return array Current sidebar settings.
+		 */
 		public function get_custom_sidebar_array() {
 			if ( ! is_array( $this->get_theme_option ) || ! array_key_exists( 'custom_sidebar', $this->get_theme_option ) ) {
 				$custom_sidebar_array = array();
@@ -46,6 +64,13 @@ if ( ! class_exists( 'Cherry_Custom_Sidebars_Methods' ) ) {
 			return $custom_sidebar_array;
 		}
 
+		/**
+		 * Updated custom sidebars array and save to database.
+		 *
+		 * @since 1.0.0
+		 * @param array $new_custom_sidebar_array New theme sidebar settings.
+		 * @return  void
+		 */
 		public function set_custom_sidebar_array( $new_custom_sidebar_array ) {
 
 			$this->get_theme_option['custom_sidebar'] = $new_custom_sidebar_array;

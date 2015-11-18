@@ -1,8 +1,10 @@
 <?php
+
 	// If this file is called directly, abort.
-	if ( !defined( 'WPINC' ) ) {
+	if ( ! defined( 'WPINC' ) ) {
 		die;
 	}
+
 	/**
 	 * Custom sidebar block.
 	 *
@@ -25,7 +27,7 @@
 						'id'			=> 'sidebar-manager-name',
 						'name'			=> 'sidebar-manager-name',
 						'class'			=> 'required',
-						'label'			=> __( 'Sidebar name:', 'cherry-sidebar-manager' )
+						'label'			=> __( 'Sidebar name:', 'cherry-sidebar-manager' ),
 					)
 				);
 				echo $ui_text->render();
@@ -38,7 +40,7 @@
 						'id'			=> 'sidebar-manager-description',
 						'name'			=> 'sidebar-manager-description',
 						'class'			=> 'required',
-						'label'			=> __( 'Sidebar description:', 'cherry-sidebar-manager' )
+						'label'			=> __( 'Sidebar description:', 'cherry-sidebar-manager' ),
 					)
 				);
 				echo $ui_text->render();
@@ -46,7 +48,7 @@
 		</div>
 		<div class="cherry-section">
 			<?php
-				echo get_submit_button( __( 'Create Sidebar', 'cherry-sidebar-manager' ), 'button-primary_', 'sidebar-manager-submit', false , 'style="float:right"');
+				echo get_submit_button( __( 'Create Sidebar', 'cherry-sidebar-manager' ), 'button-primary_', 'sidebar-manager-submit', false , 'style="float:right"' );
 			?>
 		</div>
 		<div class="cherry-spinner-wordpress spinner-wordpress-type-1"><span class="cherry-inner-circle"></span></div>
@@ -79,30 +81,32 @@
 				global $wp_registered_sidebars;
 
 				$Cherry_Custom_Sidebars_Methods = new Cherry_Custom_Sidebars_Methods();
-				$cusotm_sidebar_array = $Cherry_Custom_Sidebars_Methods -> get_custom_sidebar_array();
-				unset($cusotm_sidebar_array ['cherry-sidebar-manager-counter']);
+				$cusotm_sidebar_array = $Cherry_Custom_Sidebars_Methods->get_custom_sidebar_array();
+				unset( $cusotm_sidebar_array ['cherry-sidebar-manager-counter'] );
 
-				$sidebar_counter = count($cusotm_sidebar_array)-1;
-				$last_sidebar = end($cusotm_sidebar_array);
+				$sidebar_counter = count( $cusotm_sidebar_array ) - 1;
+				$last_sidebar = end( $cusotm_sidebar_array );
 				$counter = 0;
-				$wp_registered_sidebars = array_merge($wp_registered_sidebars, $cusotm_sidebar_array);
+				$wp_registered_sidebars = array_merge( $wp_registered_sidebars, $cusotm_sidebar_array );
 
-				if(empty($cusotm_sidebar_array)) {
+				if( empty( $cusotm_sidebar_array ) ) {
 					echo '</div><div class="sidebars-column-2">';
 				}
 
 				foreach ( $cusotm_sidebar_array as $sidebar => $cusotm_sidebar ) {
 
-					if( $counter === intval ( $sidebar_counter / 2 ) + 1 || $sidebar_counter=== 0) {
+					if ( $counter === intval( $sidebar_counter / 2 ) + 1 || $sidebar_counter ===  0 ) {
 						echo '</div><div class="sidebars-column-2">';
 					}
 
 					$wrap_class = 'widgets-holder-wrap';
-					if ( !empty( $cusotm_sidebar['class'] ) )
+					if ( ! empty( $cusotm_sidebar['class'] ) ) {
 						$wrap_class .= ' sidebar-' . $cusotm_sidebar['class'];
+					}
 
-					if ( $counter > 0 )
+					if ( $counter > 0 ) {
 						$wrap_class .= ' closed';
+					}
 
 					?>
 					<div class="<?php echo esc_attr( $wrap_class ); ?> cherry-widgets-holder-wrap">
@@ -115,7 +119,7 @@
 
 
 			<?php
-				$counter +=1;
+				$counter += 1;
 				}
 			?>
 			</div>

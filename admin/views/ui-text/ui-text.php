@@ -1,4 +1,7 @@
 <?php
+
+// @codingStandardsIgnoreStart
+
 /**
  * Class for the building ui-text elements.
  *
@@ -96,3 +99,5 @@ if ( ! class_exists( 'UI_Text' ) ) {
 
 	}
 }
+
+// @codingStandardsIgnoreEnd

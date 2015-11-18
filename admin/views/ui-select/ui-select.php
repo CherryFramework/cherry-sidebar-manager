@@ -1,4 +1,7 @@
 <?php
+
+// @codingStandardsIgnoreStart
+
 /**
  * Class for the building ui-select elements.
  *
@@ -170,3 +173,5 @@ if ( ! class_exists( 'UI_Select' ) ) {
 
 	}
 }
+
+// @codingStandardsIgnoreEnd

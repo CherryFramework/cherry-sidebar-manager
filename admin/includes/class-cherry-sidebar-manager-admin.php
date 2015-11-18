@@ -30,7 +30,7 @@ class Cherry_Custom_Sidebars_Admin {
 	 * @since  1.0.0
 	 * @return void
 	 */
-	public function __construct(){
+	public function __construct() {
 
 		// Load admin javascript and stylesheet.
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_admin_assets' ), 1 );
@@ -48,13 +48,13 @@ class Cherry_Custom_Sidebars_Admin {
 	 */
 	public function add_admin_assets( $hook_suffix ) {
 
-		if( 'widgets.php' === $hook_suffix ) {
+		if ( 'widgets.php' === $hook_suffix ) {
 			wp_register_script( 'cherry_admin_custom_sidebars_js', trailingslashit( CHERRY_CUSTOM_SIDEBARS_URI ) . 'admin/assets/js/min/cherry-admin-sidebar-manager.min.js', array( 'jquery' ), CHERRY_CUSTOM_SIDEBARS_VERSION, true );
 			wp_register_style( 'cherry_admin_custom_sidebars_css', trailingslashit( CHERRY_CUSTOM_SIDEBARS_URI ) . 'admin/assets/css/cherry-admin-sidebar-manager.css', array(), CHERRY_CUSTOM_SIDEBARS_VERSION, 'all' );
 
 			wp_register_style( 'interface-builder', trailingslashit( CHERRY_CUSTOM_SIDEBARS_URI ) . 'admin/assets/css/interface-builder.css', array(), CHERRY_CUSTOM_SIDEBARS_VERSION, 'all' );
 
-			$cherry_framework_objact = array( 'ajax_nonce_new_sidebar' => wp_create_nonce("new_custom_sidebar") , 'ajax_nonce_remove_sidebar' => wp_create_nonce("remove_custom_sidebar") );
+			$cherry_framework_objact = array( 'ajax_nonce_new_sidebar' => wp_create_nonce( 'new_custom_sidebar' ) , 'ajax_nonce_remove_sidebar' => wp_create_nonce( 'remove_custom_sidebar' ) );
 			wp_localize_script( 'cherry_admin_custom_sidebars_js', 'cherryFramework', $cherry_framework_objact );
 
 			wp_enqueue_script( 'cherry_admin_custom_sidebars_js' );
@@ -75,6 +75,12 @@ class Cherry_Custom_Sidebars_Admin {
 		require_once( trailingslashit( CHERRY_CUSTOM_SIDEBARS_DIR ) . 'admin/views/cherry-widgets-page.php' );
 	}
 
+	/**
+	 * Registration new custom sidebars.
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
 	public function registrates_custom_sidebar() {
 		global $wp_registered_sidebars;
 
@@ -85,7 +91,13 @@ class Cherry_Custom_Sidebars_Admin {
 		$wp_registered_sidebars = array_merge( $wp_registered_sidebars, $cusotm_sidebar_array );
 	}
 
-	public function edit_wp_registered_sidebars(){
+	/**
+	 * Editing registered sidebars.
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
+	public function edit_wp_registered_sidebars() {
 		global $wp_registered_sidebars;
 
 		$Cherry_Custom_Sidebars_Methods = new Cherry_Custom_Sidebars_Methods();
@@ -93,7 +105,7 @@ class Cherry_Custom_Sidebars_Admin {
 		unset( $cusotm_sidebar_array['cherry-sidebar-manager-counter'] );
 		$sidebar_array_lengh = count( $cusotm_sidebar_array );
 
-		foreach( $cusotm_sidebar_array as $sidebar => $cusotm_sidebar ){
+		foreach ( $cusotm_sidebar_array as $sidebar => $cusotm_sidebar ) {
 			unset( $wp_registered_sidebars[ $sidebar ] );
 		}
 	}
