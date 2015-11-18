@@ -1,7 +1,7 @@
 (function($){
 	'use strict';
 
-/* Form Handling Module */
+	// Form Handling Module
 	var formHandling = {
 		submitButton : null,
 		spinner : null,
@@ -24,10 +24,10 @@
 				security: cherryFramework.ajax_nonce_remove_sidebar
 		},
 
-/*Init function*/
+		// Init function
 		init : function(){
 
-/*Init variabl*/
+		// Init variabl
 			var formHandling = this;
 
 			formHandling.form = jQuery('#cherry-sidebar-manager-form');
@@ -39,7 +39,7 @@
 			formHandling.btnNewSidebar = jQuery('.btn-create-sidebar.thickbox');
 			formHandling.btnRemoveSidebar = jQuery('.cherry-delete-sidebar-manager');
 
-/*Added handler*/
+			// Added handler
 			formHandling.submitButton.on('click', formHandling.submitByttonHandler);
 			formHandling.btnNewSidebar.on('click', formHandling.openThickBox);
 			formHandling.btnRemoveSidebar.on('click', formHandling.removeCustomSidebar);
@@ -58,7 +58,7 @@
 
 		submitByttonHandler: function (){
 
-/*Validated form*/
+			// Validated form
 			var formData = formHandling.form.serializeArray(),
 				castomSidebar = jQuery(".cherry-sidebar-manager");
 
@@ -81,7 +81,8 @@
 		},
 
 		aJaxRequestNewSitebar: function (){
-/*Add new sidebar aJax request*/
+
+			// Add new sidebar aJax request
 			formHandling.ajaxRequest = jQuery.ajax({
 				data: formHandling.newSidebarData,
 
@@ -132,7 +133,7 @@
 				}
 			});
 		},
-/*Remove button handler*/
+		// Remove button handler
 		removeCustomSidebar: function (){
 			var customSidebar = jQuery(this).parents('.cherry-widgets-holder-wrap');
 
@@ -141,7 +142,7 @@
 			formHandling.aJaxRequestremoveSitebar(customSidebar);
 		},
 
-/*Remove sidebar aJax request*/
+		// Remove sidebar aJax request
 		aJaxRequestremoveSitebar: function(sidebar){
 			formHandling.ajaxRequest = jQuery.ajax({
 				data: formHandling.removeSidebarData,
@@ -161,7 +162,7 @@
 
 		formHandling.init();
 
-		/*Add handler on sidebar wrapper title*/
+		// Add handler on sidebar wrapper title
 		jQuery('body:not(.widgets_access) .sidebar-manager-name').on('click', sidebarNameHandler);
 
 		function sidebarNameHandler(){

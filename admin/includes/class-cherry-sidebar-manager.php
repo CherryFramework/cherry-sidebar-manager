@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * @package   Cherry_Custom_Sidebars_Methods
+ * @package   Cherry Sidebar Manager
  * @author    Cherry Team
  * @license   GPL-2.0+
  * @link      http://www.cherryframework.com/
@@ -14,24 +14,35 @@ if ( !defined( 'WPINC' ) ) {
 	die;
 }
 
-if ( !class_exists( 'Cherry_Custom_Sidebars_Methods' ) ) {
+if ( ! class_exists( 'Cherry_Custom_Sidebars_Methods' ) ) {
 
+	/**
+	 * Class for Custom sidebars methods.
+	 *
+	 * @since 1.0.0
+	 */
 	class Cherry_Custom_Sidebars_Methods {
 
 		public $current_theme;
 		public $get_theme_option;
 
+		/**
+		 * Sets up our actions/filters or another settings.
+		 *
+		 * @since 1.0.0
+		 */
 		function __construct() {
 			$this->current_theme = wp_get_theme();
 			$this->get_theme_option = get_option($this->current_theme . '_sidbars', array());
 		}
 
 		public function get_custom_sidebar_array() {
-			if(!is_array($this->get_theme_option) || !array_key_exists('custom_sidebar', $this->get_theme_option)){
+			if ( ! is_array( $this->get_theme_option ) || ! array_key_exists( 'custom_sidebar', $this->get_theme_option ) ) {
 				$custom_sidebar_array = array();
-			}else{
+			} else {
 				$custom_sidebar_array = $this->get_theme_option['custom_sidebar'];
 			}
+
 			return $custom_sidebar_array;
 		}
 
@@ -39,7 +50,7 @@ if ( !class_exists( 'Cherry_Custom_Sidebars_Methods' ) ) {
 
 			$this->get_theme_option['custom_sidebar'] = $new_custom_sidebar_array;
 
-			update_option($this->current_theme . '_sidbars', $this->get_theme_option);
+			update_option( $this->current_theme . '_sidbars', $this->get_theme_option );
 		}
 	}
 }

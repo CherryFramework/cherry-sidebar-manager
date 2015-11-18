@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * @package   Cherry_Include_Custom_Sidebar
+ * @package   Cherry Sidebar Manager
  * @author    Cherry Team
  * @license   GPL-2.0+
  * @link      http://www.cherryframework.com/
@@ -10,7 +10,14 @@
  **/
 
 if ( !class_exists( 'Cherry_Include_Custom_Sidebar' ) ) {
+
+	/**
+	 * Class for Include Custom Sidebar.
+	 *
+	 * @since 1.0.0
+	 */
 	class Cherry_Include_Custom_Sidebar {
+
 		/**
 		 * Holds the instances of this class.
 		 *
@@ -18,9 +25,19 @@ if ( !class_exists( 'Cherry_Include_Custom_Sidebar' ) ) {
 		 * @var   object
 		 */
 		private static $instance = null;
+
+		/**
+		 * Post sidebar list.
+		 *
+		 * @var null
+		 */
 		private $post_sidebars = null;
 
-
+		/**
+		 * Sets up our actions/filters.
+		 *
+		 * @since 1.0.0
+		 */
 		public function __construct() {
 			add_action( 'cherry_content', array( $this, 'set_custom_sidebar' ) );
 		}
@@ -39,13 +56,13 @@ if ( !class_exists( 'Cherry_Include_Custom_Sidebar' ) ) {
 			if ( is_array( $this->post_sidebars ) ) {
 
 				$Cherry_Custom_Sidebars_Methods = new Cherry_Custom_Sidebars_Methods();
-				$custom_sidebar_array           = $Cherry_Custom_Sidebars_Methods->get_custom_sidebar_array();
-				unset($custom_sidebar_array['cherry-sidebar-manager-counter']);
+				$custom_sidebar_array = $Cherry_Custom_Sidebars_Methods->get_custom_sidebar_array();
+				unset( $custom_sidebar_array['cherry-sidebar-manager-counter'] );
 
-				$wp_registered_sidebars         = array_merge( $wp_registered_sidebars, $custom_sidebar_array );
+				$wp_registered_sidebars = array_merge( $wp_registered_sidebars, $custom_sidebar_array );
 
-				add_filter( 'cherry_get_main_sidebar', array($this, 'set_main_sidebar'), 1, 1);
-				add_filter( 'cherry_get_secondary_sidebar', array($this, 'set_secondary_sidebar'), 1, 1);
+				add_filter( 'cherry_get_main_sidebar', array( $this, 'set_main_sidebar' ), 1, 1 );
+				add_filter( 'cherry_get_secondary_sidebar', array( $this, 'set_secondary_sidebar' ), 1, 1 );
 			}
 		}
 
@@ -53,7 +70,8 @@ if ( !class_exists( 'Cherry_Include_Custom_Sidebar' ) ) {
 		 * Set main sidebar in variable cherry_get_main_sidebar.
 		 *
 		 * @since 1.0.0
-		 * @return string - main sidebar id
+		 * @param string  $sidebar  Current sidebar id.
+		 * @return string $sidebar  main sidebar id.
 		 */
 		public function set_main_sidebar( $sidebar ) {
 
@@ -69,11 +87,13 @@ if ( !class_exists( 'Cherry_Include_Custom_Sidebar' ) ) {
 
 			return $sidebar;
 		}
+
 		/**
 		 * Set main sidebar in variable cherry_get_secondary_sidebar.
 		 *
 		 * @since 1.0.0
-		 * @return string - secondary sidebar id
+		 * @param string  $sidebar  Current sidebar id.
+		 * @return string $sidebar  Secondary sidebar id.
 		 */
 		public function set_secondary_sidebar( $sidebar ) {
 
@@ -89,6 +109,7 @@ if ( !class_exists( 'Cherry_Include_Custom_Sidebar' ) ) {
 
 			return $sidebar;
 		}
+
 		/**
 		 * Returns the instance.
 		 *

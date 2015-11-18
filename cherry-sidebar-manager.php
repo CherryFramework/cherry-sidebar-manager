@@ -10,15 +10,20 @@
  * License:     GPL-3.0+
  * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
  * Domain Path: /languages
+ *
+ * @package  Cherry Sidebar Manager
+ * @category Core
+ * @author   Cherry Team
+ * @license  GPL-2.0+
  */
 
 // If this file is called directly, abort.
-if ( !defined( 'WPINC' ) ) {
+if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
 // If class 'Cherry_Custom_Sidebars' not exists.
-if ( !class_exists( 'Cherry_Custom_Sidebars' ) ) {
+if ( ! class_exists( 'Cherry_Custom_Sidebars' ) ) {
 
 	/**
 	 * Sets up and initializes the Cherry Custom Sidebars plugin.
@@ -46,16 +51,16 @@ if ( !class_exists( 'Cherry_Custom_Sidebars' ) ) {
 			add_action( 'plugins_loaded', array( $this, 'constants' ), 1 );
 
 			// Internationalize the text strings used.
-			add_action( 'plugins_loaded', array( $this, 'lang' ),      2 );
+			add_action( 'plugins_loaded', array( $this, 'lang' ), 2 );
 
 			// Load the functions files.
-			add_action( 'plugins_loaded', array( $this, 'includes' ),  3 );
+			add_action( 'plugins_loaded', array( $this, 'includes' ), 3 );
 
 			// Load the admin files.
-			add_action( 'plugins_loaded', array( $this, 'admin' ),     4 );
+			add_action( 'plugins_loaded', array( $this, 'admin' ), 4 );
 
 			// Register activation and deactivation hook.
-			register_activation_hook( __FILE__, array( $this, 'activation'     ) );
+			register_activation_hook( __FILE__, array( $this, 'activation' ) );
 			register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
 		}
 
@@ -65,7 +70,10 @@ if ( !class_exists( 'Cherry_Custom_Sidebars' ) ) {
 		 * @since 1.0.0
 		 */
 		function constants() {
-			if ( !function_exists( 'get_plugin_data' ) ) require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
+			if ( ! function_exists( 'get_plugin_data' ) ) {
+				require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+			}
 
 			$plugin_data = get_plugin_data( plugin_dir_path(__FILE__) . basename( __FILE__ ) );
 
@@ -131,7 +139,7 @@ if ( !class_exists( 'Cherry_Custom_Sidebars' ) ) {
 				$Cherry_Plugin_Update -> init( array(
 						'version'			=> CHERRY_CUSTOM_SIDEBARS_VERSION,
 						'slug'				=> CHERRY_CUSTOM_SIDEBARS_SLUG,
-						'repository_name'	=> CHERRY_CUSTOM_SIDEBARS_SLUG
+						'repository_name'	=> CHERRY_CUSTOM_SIDEBARS_SLUG,
 				));
 			}
 		}
