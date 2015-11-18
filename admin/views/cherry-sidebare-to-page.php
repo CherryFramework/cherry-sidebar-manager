@@ -158,7 +158,7 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar' ) ) {
 			};
 
 			?>
-				<p class="howto"><?php printf( __( 'You can choose page sidebars or create a new sidebar on %swidgets page%s .', 'cherry-sidebar-manager' ), '<a href="widgets.php" target="_blank" title="' . __( 'Widgets Page' ) . '">', '</a>')?></p>
+				<p class="howto"><?php printf( __( 'You can choose page sidebars or create a new sidebar on %swidgets page%s .', 'cherry-sidebar-manager' ), '<a href="widgets.php" target="_blank" title="' . __( 'Widgets Page', 'cherry-sidebar-manager' ) . '">', '</a>' )?></p>
 			<?php
 		}
 
@@ -196,7 +196,7 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar' ) ) {
 		 * Function get post or page sidebar.
 		 *
 		 * @since  1.0.0
-		 * @param  int    $post_id      The ID of the current post being saved.
+		 * @param  int $post_id         The ID of the current post being saved.
 		 * @return string $post_sidebar Sidebar id value.
 		 */
 		public function get_post_sidebar( $post_id ) {

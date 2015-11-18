@@ -98,7 +98,7 @@
 				$counter = 0;
 				$wp_registered_sidebars = array_merge( $wp_registered_sidebars, $cusotm_sidebar_array );
 
-				if( empty( $cusotm_sidebar_array ) ) {
+				if ( empty( $cusotm_sidebar_array ) ) {
 					echo '</div><div class="sidebars-column-2">';
 				}
 

@@ -19,8 +19,8 @@ if ( ! function_exists( 'cherry_register_sidebar' ) ) {
 	/**
 	 * New sidebar register.
 	 *
-	 * @param  array $args [description]
-	 * @return [type]       [description]
+	 * @param  array $args Sidebar settings.
+	 * @return void
 	 */
 	function cherry_register_sidebar( $args ) {
 
@@ -133,7 +133,7 @@ add_action( 'wp_ajax_remove_custom_sidebar', 'remove_custom_sidebar' );
  * Custom sidebar removing function.
  *
  * @since 1.0.0
- * @return [type] [description]
+ * @return void
  */
 function remove_custom_sidebar() {
 	check_ajax_referer( 'remove_custom_sidebar', 'security' );
