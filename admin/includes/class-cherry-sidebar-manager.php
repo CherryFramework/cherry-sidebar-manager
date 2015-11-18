@@ -7,11 +7,10 @@
  * @license   GPL-2.0+
  * @link      http://www.cherryframework.com/
  * @copyright 2015 Cherry Team
- *
  **/
 
 // If this file is called directly, abort.
-if ( !defined( 'WPINC' ) ) {
+if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
@@ -45,7 +44,7 @@ if ( ! class_exists( 'Cherry_Custom_Sidebars_Methods' ) ) {
 		 */
 		function __construct() {
 			$this->current_theme = wp_get_theme();
-			$this->get_theme_option = get_option($this->current_theme . '_sidbars', array());
+			$this->get_theme_option = get_option( $this->current_theme . '_sidbars', array() );
 		}
 
 		/**

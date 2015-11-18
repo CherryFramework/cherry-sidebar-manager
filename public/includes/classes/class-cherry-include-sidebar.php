@@ -1,15 +1,15 @@
 <?php
 /**
+ * Cherry Include Custom Sidebar.
  *
  * @package   Cherry Sidebar Manager
  * @author    Cherry Team
  * @license   GPL-2.0+
  * @link      http://www.cherryframework.com/
  * @copyright 2015 Cherry Team
- *
  **/
 
-if ( !class_exists( 'Cherry_Include_Custom_Sidebar' ) ) {
+if ( ! class_exists( 'Cherry_Include_Custom_Sidebar' ) ) {
 
 	/**
 	 * Class for Include Custom Sidebar.
@@ -47,7 +47,7 @@ if ( !class_exists( 'Cherry_Include_Custom_Sidebar' ) ) {
 		 *
 		 * @since 1.0.0
 		 */
-		public function set_custom_sidebar(){
+		public function set_custom_sidebar() {
 			global $wp_registered_sidebars;
 
 			$object_id = get_queried_object_id();
@@ -70,7 +70,7 @@ if ( !class_exists( 'Cherry_Include_Custom_Sidebar' ) ) {
 		 * Set main sidebar in variable cherry_get_main_sidebar.
 		 *
 		 * @since 1.0.0
-		 * @param string  $sidebar  Current sidebar id.
+		 * @param  string $sidebar  Current sidebar id.
 		 * @return string $sidebar  main sidebar id.
 		 */
 		public function set_main_sidebar( $sidebar ) {
@@ -92,7 +92,7 @@ if ( !class_exists( 'Cherry_Include_Custom_Sidebar' ) ) {
 		 * Set main sidebar in variable cherry_get_secondary_sidebar.
 		 *
 		 * @since 1.0.0
-		 * @param string  $sidebar  Current sidebar id.
+		 * @param  string $sidebar  Current sidebar id.
 		 * @return string $sidebar  Secondary sidebar id.
 		 */
 		public function set_secondary_sidebar( $sidebar ) {

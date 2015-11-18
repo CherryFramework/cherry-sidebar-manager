@@ -75,7 +75,7 @@ if ( ! class_exists( 'Cherry_Custom_Sidebars' ) ) {
 				require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 			}
 
-			$plugin_data = get_plugin_data( plugin_dir_path(__FILE__) . basename( __FILE__ ) );
+			$plugin_data = get_plugin_data( plugin_dir_path( __FILE__ ) . basename( __FILE__ ) );
 
 			/**
 			 * Set constant name for the post type name.
@@ -171,8 +171,9 @@ if ( ! class_exists( 'Cherry_Custom_Sidebars' ) ) {
 		public static function get_instance() {
 
 			// If the single instance hasn't been set, set it now.
-			if ( null == self::$instance )
+			if ( null == self::$instance ) {
 				self::$instance = new self;
+			}
 
 			return self::$instance;
 		}

@@ -1,12 +1,12 @@
 <?php
 /**
+ * Class for render and saving custom sidebars.
  *
  * @package   Cherry_Custom_Sidebar
  * @author    Cherry Team
  * @license   GPL-2.0+
  * @link      http://www.cherryframework.com/
  * @copyright 2015 Cherry Team
- *
  **/
 
 // If this file is called directly, abort.
@@ -44,7 +44,7 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar' ) ) {
 			add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 10, 2 );
 
 			// Saves the post format on the post editing page.
-			add_action( 'save_post',      array( $this, 'save_post'      ), 10, 2 );
+			add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
 		}
 
 		/**
@@ -57,7 +57,7 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar' ) ) {
 		 * @return void
 		 */
 		public function add_meta_boxes( $post_type, $post ) {
-			$allowed_post_type = apply_filters( 'cherry_sidebar_post_type', array('page', 'post', 'portfolio', 'testimonial', 'service', 'team') );
+			$allowed_post_type = apply_filters( 'cherry_sidebar_post_type', array( 'page', 'post', 'portfolio', 'testimonial', 'service', 'team' ) );
 
 			if ( in_array( $post_type, $allowed_post_type )
 					&& ( current_user_can( 'edit_post_meta', $post->ID )
@@ -91,7 +91,7 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar' ) ) {
 					$metabox['page'],
 					$metabox['context'],
 					$metabox['priority'],
-					$metabox['callback_args'],
+					$metabox['callback_args']
 				);
 			}
 		}
@@ -122,12 +122,12 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar' ) ) {
 				'post-main-sidebar'			=> array(
 					'title'	=> __( 'Main Sidebar:', 'cherry-sidebar-manager' ),
 					'id'	=> 'cherry-post-main-sidebar',
-					'value'	=> is_array( $select_sidebar['cherry-post-main-sidebar'] ) && isset( $select_sidebar['cherry-post-main-sidebar'] ) ? $select_sidebar['cherry-post-main-sidebar'] : ''
+					'value'	=> is_array( $select_sidebar['cherry-post-main-sidebar'] ) && isset( $select_sidebar['cherry-post-main-sidebar'] ) ? $select_sidebar['cherry-post-main-sidebar'] : '',
 				),
 				'post-secondary-sidebar'	=> array(
 					'title'	=> __( 'Secondary Sidebar:', 'cherry-sidebar-manager' ),
 					'id'	=> 'cherry-post-secondary-sidebar',
-					'value'	=> is_array( $select_sidebar['cherry-post-secondary-sidebar'] && isset( $select_sidebar['cherry-post-secondary-sidebar'] ) ) ? $select_sidebar['cherry-post-secondary-sidebar'] : ''
+					'value'	=> is_array( $select_sidebar['cherry-post-secondary-sidebar'] && isset( $select_sidebar['cherry-post-secondary-sidebar'] ) ) ? $select_sidebar['cherry-post-secondary-sidebar'] : '',
 				),
 			);
 
@@ -166,8 +166,8 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar' ) ) {
 		 * Saves the post style metadata if on the post editing screen in the admin.
 		 *
 		 * @since  1.0.0
-		 * @param  int      $post_id The ID of the current post being saved.
-		 * @param  object   $post    The post object currently being saved.
+		 * @param  int    $post_id The ID of the current post being saved.
+		 * @param  object $post    The post object currently being saved.
 		 * @return void|int
 		 */
 		public function save_post( $post_id, $post = '' ) {
@@ -196,8 +196,8 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar' ) ) {
 		 * Function get post or page sidebar.
 		 *
 		 * @since  1.0.0
-		 * @param  int      $post_id The ID of the current post being saved.
-		 * @return string - sidebar id
+		 * @param  int    $post_id      The ID of the current post being saved.
+		 * @return string $post_sidebar Sidebar id value.
 		 */
 		public function get_post_sidebar( $post_id ) {
 

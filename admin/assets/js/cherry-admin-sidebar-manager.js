@@ -1,30 +1,31 @@
-( function( $ ){
+( function( $ ) {
+
 	'use strict';
 
 	// Form Handling Module
 	var formHandling = {
 		submitButton: null,
 		spinner: null,
-		errorMessage : null,
+		errorMessage: null,
 		form: null,
 		btnNewSidebar: null,
 		btnRemoveSidebar: null,
 		customSidebarHolder1: null,
 		customSidebarHolder2: null,
 		ajaxRequest: null,
-		newSidebarData : {
+		newSidebarData: {
 			action: 'add_new_custom_sidebar',
 			security: cherryFramework.ajax_nonce_new_sidebar,
 			formdata:{}
 		},
 		removeSidebarData: {
 			action: 'remove_custom_sidebar',
-			id : '',
+			id: '',
 			security: cherryFramework.ajax_nonce_remove_sidebar
 		},
 
 		// Init function
-		init : function(){
+		init: function() {
 
 			// Init variable
 			var formHandling = this;
@@ -43,11 +44,11 @@
 			formHandling.btnNewSidebar.on( 'click', formHandling.openThickBox );
 			formHandling.btnRemoveSidebar.on( 'click', formHandling.removeCustomSidebar );
 
-			jQuery.ajaxSetup({
+			jQuery.ajaxSetup( {
 				type: 'GET',
 				url: ajaxurl,
 				cache: false
-			});
+			} );
 		},
 		openThickBox: function() {
 			jQuery( 'input[type="text"]', formHandling.form ).removeClass( 'error-invalid' );
@@ -56,11 +57,14 @@
 
 			// Validated form
 			var formData = formHandling.form.serializeArray(),
-				castomSidebar = jQuery( '.cherry-sidebar-manager' );
+				castomSidebar = jQuery( '.cherry-sidebar-manager' ),
+				key,
+				object,
+				input;
 
-			for ( var key in formData ) {
-				var object = formData[ key ],
-					input = jQuery( 'input[name="' + object.name + '"]', formHandling.form );
+			for ( key in formData ) {
+				object = formData[ key ];
+				input = jQuery( 'input[name="' + object.name + '"]', formHandling.form );
 
 				if ( ! object.value && input.hasClass( 'required' ) ) {
 					input.addClass( 'error-invalid' );
@@ -74,16 +78,16 @@
 				formHandling.aJaxRequestNewSitebar();
 			}
 
-			return !1;
+			return ! 1;
 		},
 		aJaxRequestNewSitebar: function() {
 
 			// Add new sidebar aJax request
-			formHandling.ajaxRequest = jQuery.ajax({
+			formHandling.ajaxRequest = jQuery.ajax( {
 				data: formHandling.newSidebarData,
 				beforeSend: function() {
-					formHandling.submitButton.attr( {'disabled':true} );
-					formHandling.spinner.css( {'display':'block'} );
+					formHandling.submitButton.attr( { 'disabled':true } );
+					formHandling.spinner.css( { 'display':'block' } );
 
 					if ( formHandling.ajaxRequest ) {
 						formHandling.ajaxRequest.abort();
@@ -117,13 +121,13 @@
 					}
 				},
 				complete: function() {
-					formHandling.spinner.delay( 200 ).css( {'display':'none'} );
-					formHandling.submitButton.attr( {'disabled':false} );
+					formHandling.spinner.delay( 200 ).css( { 'display':'none' } );
+					formHandling.submitButton.attr( { 'disabled':false } );
 				},
-				error : function(){
-					formHandling.errorMessage.css( {'display':'block'} ).delay( 3000 ).fadeOut( 800, 0 );
+				error : function() {
+					formHandling.errorMessage.css( { 'display':'block' } ).delay( 3000 ).fadeOut( 800, 0 );
 				}
-			});
+			} );
 		},
 
 		// Remove button handler
@@ -137,17 +141,17 @@
 
 		// Remove sidebar aJax request
 		aJaxRequestremoveSitebar: function( sidebar ) {
-			formHandling.ajaxRequest = jQuery.ajax({
+			formHandling.ajaxRequest = jQuery.ajax( {
 				data: formHandling.removeSidebarData,
-				beforeSend: function(){
-					jQuery( '.cherry-spinner-wordpress', sidebar ).css( {'display':'block'} );
+				beforeSend: function() {
+					jQuery( '.cherry-spinner-wordpress', sidebar ).css( { 'display':'block' } );
 				},
 				success: function( response ) {
 					sidebar.remove();
-				},
-			});
+				}
+			} );
 		}
-	}
+	};
 
 	jQuery( document ).ready( function() {
 
@@ -163,4 +167,4 @@
 			jQuery( '.sidebar-name-arrow', _this ).toggleClass( 'closed-arrow' );
 		}
 	});
-}( jQuery ))
+}( jQuery ) );

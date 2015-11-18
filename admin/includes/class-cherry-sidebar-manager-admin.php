@@ -2,7 +2,7 @@
 /**
  * Sets up the admin functionality for the plugin.
  *
- * @package   Cherry_Custom_Sidebars_Admin
+ * @package   Cherry Sidebar Manager
  * @author    Cherry Team
  * @license   GPL-2.0+
  * @link      http://www.cherryframework.com/

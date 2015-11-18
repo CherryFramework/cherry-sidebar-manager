@@ -1,4 +1,13 @@
 <?php
+/**
+ * Widget page functions.
+ *
+ * @package   Cherry_Custom_Sidebar
+ * @author    Cherry Team
+ * @license   GPL-2.0+
+ * @link      http://www.cherryframework.com/
+ * @copyright 2015 Cherry Team
+ **/
 
 	// If this file is called directly, abort.
 	if ( ! defined( 'WPINC' ) ) {
@@ -95,7 +104,7 @@
 
 				foreach ( $cusotm_sidebar_array as $sidebar => $cusotm_sidebar ) {
 
-					if ( $counter === intval( $sidebar_counter / 2 ) + 1 || $sidebar_counter ===  0 ) {
+					if ( intval( $sidebar_counter / 2 ) + 1 === $counter || 0 === $sidebar_counter ) {
 						echo '</div><div class="sidebars-column-2">';
 					}
 

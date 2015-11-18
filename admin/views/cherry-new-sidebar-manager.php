@@ -1,8 +1,12 @@
 <?php
 /**
- * Custom sidebar dom.
+ * Custom sidebar DOM render functions.
  *
- * @since 1.0.0
+ * @package   Cherry Sidebar Manager
+ * @author    Cherry Team
+ * @license   GPL-2.0+
+ * @link      http://www.cherryframework.com/
+ * @copyright 2015 Cherry Team
  */
 
 // If this file is called directly, abort.
@@ -10,8 +14,15 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-if( ! function_exists( 'cherry_register_sidebar' ) ) {
-	 function cherry_register_sidebar( $args ) {
+if ( ! function_exists( 'cherry_register_sidebar' ) ) {
+
+	/**
+	 * New sidebar register.
+	 *
+	 * @param  array $args [description]
+	 * @return [type]       [description]
+	 */
+	function cherry_register_sidebar( $args ) {
 
 		// Set up some default sidebar arguments.
 		$defaults = array(
@@ -61,6 +72,11 @@ if( ! function_exists( 'cherry_register_sidebar' ) ) {
 
 add_action( 'wp_ajax_add_new_custom_sidebar', 'add_custom_sidebar' );
 
+/**
+ * Custom sidebar item render.
+ *
+ * @return void
+ */
 function add_custom_sidebar() {
 	check_ajax_referer( 'new_custom_sidebar', 'security' );
 
@@ -97,7 +113,7 @@ function add_custom_sidebar() {
 			<div class="cherry-spinner-wordpress spinner-wordpress-type-1"><span class="cherry-inner-circle"></span></div>
 			<span class="dashicons dashicons-trash"></span>
 		</div>
-		<div id="<?php echo esc_attr ('cherry-sidebar-manager-' . $id) ?>" class="widgets-sortables ui-sortable cherry-sidebar-manager">
+		<div id="<?php echo esc_attr( 'cherry-sidebar-manager-' . $id ) ?>" class="widgets-sortables ui-sortable cherry-sidebar-manager">
 			<div class="sidebar-name">
 				<div class="sidebar-name-arrow"><br></div>
 				<h3><?php echo esc_html( $form_data[0]['value'] ) ?><span class="spinner"></span></h3>
@@ -113,6 +129,12 @@ function add_custom_sidebar() {
 }
 add_action( 'wp_ajax_remove_custom_sidebar', 'remove_custom_sidebar' );
 
+/**
+ * Custom sidebar removing function.
+ *
+ * @since 1.0.0
+ * @return [type] [description]
+ */
 function remove_custom_sidebar() {
 	check_ajax_referer( 'remove_custom_sidebar', 'security' );
 
