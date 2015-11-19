@@ -124,7 +124,7 @@
 					formHandling.spinner.delay( 200 ).css( { 'display':'none' } );
 					formHandling.submitButton.attr( { 'disabled':false } );
 				},
-				error : function() {
+				error: function() {
 					formHandling.errorMessage.css( { 'display':'block' } ).delay( 3000 ).fadeOut( 800, 0 );
 				}
 			} );

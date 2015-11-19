@@ -20,7 +20,7 @@ if ( ! function_exists( 'cherry_register_sidebar' ) ) {
 	 * New sidebar register.
 	 *
 	 * @param  array $args Sidebar settings.
-	 * @return void
+	 * @return string Sidebar ID added to $wp_registered_sidebars global.
 	 */
 	function cherry_register_sidebar( $args ) {
 
