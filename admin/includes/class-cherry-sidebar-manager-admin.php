@@ -60,6 +60,7 @@ class Cherry_Custom_Sidebars_Admin {
 			wp_enqueue_script( 'cherry_admin_custom_sidebars_js' );
 			wp_enqueue_style( 'cherry_admin_custom_sidebars_css' );
 			wp_enqueue_style( 'interface-builder' );
+
 		} elseif ( false !== strpos( $hook_suffix, 'post' ) ) {
 			wp_register_style( 'cherry-sidebar-manager-post-page', trailingslashit( CHERRY_CUSTOM_SIDEBARS_URI ) . 'admin/assets/css/cherry-sidebar-manager-post-page.css', array(), CHERRY_CUSTOM_SIDEBARS_VERSION, 'all' );
 			wp_enqueue_style( 'cherry-sidebar-manager-post-page' );
