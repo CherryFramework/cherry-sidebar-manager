@@ -1,4 +1,4 @@
-( function( $ ) {
+( function( jQuery ) {
 
 	'use strict';
 
@@ -15,13 +15,13 @@
 		ajaxRequest: null,
 		newSidebarData: {
 			action: 'add_new_custom_sidebar',
-			security: cherryFramework.ajax_nonce_new_sidebar,
+			security: window.cherryFramework.ajax_nonce_new_sidebar,
 			formdata:{}
 		},
 		removeSidebarData: {
 			action: 'remove_custom_sidebar',
 			id: '',
-			security: cherryFramework.ajax_nonce_remove_sidebar
+			security: window.cherryFramework.ajax_nonce_remove_sidebar
 		},
 
 		// Init function
@@ -46,7 +46,7 @@
 
 			jQuery.ajaxSetup( {
 				type: 'GET',
-				url: ajaxurl,
+				url: window.ajaxurl,
 				cache: false
 			} );
 		},
@@ -57,7 +57,6 @@
 
 			// Validated form
 			var formData = formHandling.form.serializeArray(),
-				castomSidebar = jQuery( '.cherry-sidebar-manager' ),
 				key,
 				object,
 				input;
@@ -71,7 +70,7 @@
 				} else {
 					input.removeClass( 'error-invalid' );
 				}
-			};
+			}
 
 			if ( ! jQuery( '.error-invalid', formHandling.form )[0] ) {
 				formHandling.newSidebarData.formdata = formData;
@@ -146,7 +145,7 @@
 				beforeSend: function() {
 					jQuery( '.cherry-spinner-wordpress', sidebar ).css( { 'display':'block' } );
 				},
-				success: function( response ) {
+				success: function() {
 					sidebar.remove();
 				}
 			} );
@@ -158,13 +157,12 @@
 		formHandling.init();
 
 		// Add handler on sidebar wrapper title
-		jQuery( 'body:not(.widgets_access) .sidebar-manager-name' ).on( 'click', sidebarNameHandler );
-
-		function sidebarNameHandler() {
+		jQuery( 'body:not(.widgets_access) .sidebar-manager-name' ).on( 'click', function() {
 			var _this = jQuery( this );
 
 			jQuery( '~ .sidebars-holder', _this ).toggleClass( 'closed' );
 			jQuery( '.sidebar-name-arrow', _this ).toggleClass( 'closed-arrow' );
-		}
+		} );
+
 	});
 }( jQuery ) );
