@@ -119,15 +119,15 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar' ) ) {
 			$select_sidebar = $this->get_post_sidebar( $post->ID );
 
 			$sidebars = array(
-				'post-main-sidebar'			=> array(
+				'cherry-post-main-sidebar'			=> array(
 					'title'	=> __( 'Main Sidebar:', 'cherry-sidebar-manager' ),
 					'id'	=> 'cherry-post-main-sidebar',
-					'value'	=> is_array( $select_sidebar['cherry-post-main-sidebar'] ) && isset( $select_sidebar['cherry-post-main-sidebar'] ) ? $select_sidebar['cherry-post-main-sidebar'] : '',
+					'value'	=> ( isset( $select_sidebar['cherry-post-main-sidebar'] ) && is_array( $select_sidebar ) ) ? $select_sidebar['cherry-post-main-sidebar'] : '',
 				),
-				'post-secondary-sidebar'	=> array(
+				'cherry-post-secondary-sidebar'	=> array(
 					'title'	=> __( 'Secondary Sidebar:', 'cherry-sidebar-manager' ),
 					'id'	=> 'cherry-post-secondary-sidebar',
-					'value'	=> is_array( $select_sidebar['cherry-post-secondary-sidebar'] && isset( $select_sidebar['cherry-post-secondary-sidebar'] ) ) ? $select_sidebar['cherry-post-secondary-sidebar'] : '',
+					'value'	=> ( isset( $select_sidebar['cherry-post-secondary-sidebar'] ) && is_array( $select_sidebar ) ) ? $select_sidebar['cherry-post-secondary-sidebar'] : '',
 				),
 			);
 
