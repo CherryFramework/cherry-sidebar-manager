@@ -139,6 +139,13 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar' ) ) {
 				$select_options[ $sidebar_id ] = $sidebar_name;
 			}
 
+			/**
+			 * Filter for editing all sidebars list.
+			 *
+			 * @var array
+			 */
+			$select_options = apply_filters( 'cherry_all_sidebars_list', $select_options );
+
 			foreach ( $sidebars as $sidebar => $sidebar_value ) {
 
 				$output = '<p><strong>' . $sidebar_value['title'] . '</strong></p>';
