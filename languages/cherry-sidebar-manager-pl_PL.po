@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cherry-sidebar-manager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-30 13:04+0200\n"
-"PO-Revision-Date: 2015-10-30 13:04+0200\n"
+"POT-Creation-Date: 2015-12-11 14:52+0200\n"
+"PO-Revision-Date: 2015-12-11 14:52+0200\n"
 "Last-Translator: J.L.Dokter <jldokter@gmail.com>\n"
 "Language-Team: Cherry Team <support@cherryframework.com>\n"
 "Language: pl_PL\n"
@@ -20,73 +20,77 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: admin/views/cherry-sidebare-to-page.php:66
+#: admin/views/cherry-sidebare-to-page.php:75
 msgid "Post Sidebars"
-msgstr ""
+msgstr "Panele boczne wpisu"
 
-#: admin/views/cherry-sidebare-to-page.php:112
+#: admin/views/cherry-sidebare-to-page.php:123
 msgid "Main Sidebar:"
-msgstr ""
+msgstr "Główny panel boczny"
 
-#: admin/views/cherry-sidebare-to-page.php:116
+#: admin/views/cherry-sidebare-to-page.php:128
 msgid "Secondary Sidebar:"
-msgstr ""
+msgstr "Dodatkowy panel boczny"
 
-#: admin/views/cherry-sidebare-to-page.php:121
+#: admin/views/cherry-sidebare-to-page.php:134
 msgid "Sidebar not selected"
-msgstr ""
+msgstr "Panel boczny nie został wybrany"
 
-#: admin/views/cherry-sidebare-to-page.php:147
+#: admin/views/cherry-sidebare-to-page.php:168
 #, php-format
 msgid ""
 "You can choose page sidebars or create a new sidebar on %swidgets page%s ."
 msgstr ""
+"Można wybrać panele boczne strony lub utworzyć nowy panel boczny na stronie: "
+"%swidgets page%s."
 
-#: admin/views/cherry-sidebare-to-page.php:147
+#: admin/views/cherry-sidebare-to-page.php:168
 msgid "Widgets Page"
-msgstr ""
+msgstr "Strona z Widżetami"
 
-#: admin/views/cherry-widgets-page.php:19
+#: admin/views/cherry-widgets-page.php:30
 msgid "Create new custom sidebar."
-msgstr ""
+msgstr "Utwórz nowy niestandardowy panel boczny."
 
-#: admin/views/cherry-widgets-page.php:28
+#: admin/views/cherry-widgets-page.php:39
 msgid "Sidebar name:"
-msgstr ""
+msgstr "Nazwa panelu bocznego:"
 
-#: admin/views/cherry-widgets-page.php:41
+#: admin/views/cherry-widgets-page.php:52
 msgid "Sidebar description:"
-msgstr ""
+msgstr "Opis panelu bocznego:"
 
-#: admin/views/cherry-widgets-page.php:49
+#: admin/views/cherry-widgets-page.php:60
 msgid "Create Sidebar"
-msgstr ""
-
-#: admin/views/cherry-widgets-page.php:53
-msgid "Cannot add new custom sidebar"
-msgstr ""
-
-#: admin/views/cherry-widgets-page.php:61
-msgid "Default Sidebars"
-msgstr ""
+msgstr "Utwórz panel boczny"
 
 #: admin/views/cherry-widgets-page.php:64
+msgid "Cannot add new custom sidebar"
+msgstr "Nie można dodać nowego niestandardowego panelu bocznego."
+
+#: admin/views/cherry-widgets-page.php:72
+msgid "Default Sidebars"
+msgstr "Domyślne panele boczne"
+
+#: admin/views/cherry-widgets-page.php:75
 msgid "Default sidebars created in child theme code itself."
-msgstr ""
+msgstr "Domyślne panele boczne utworzone w samym kodzie motywu podrzędnego."
 
-#: admin/views/cherry-widgets-page.php:70
+#: admin/views/cherry-widgets-page.php:81
 msgid "Cherry Custom Sidebars"
-msgstr ""
+msgstr "Niestandardowe panele boczne Cherry"
 
-#: admin/views/cherry-widgets-page.php:73
+#: admin/views/cherry-widgets-page.php:84
 msgid ""
 "You can create a custom sidebar yourself and enable if for any page or post. "
 "This can be done on page editing stage."
 msgstr ""
+"Można samodzielnie utworzyć niestandardowy panel boczny, a zatem włączyć go "
+"na dowolnej stronie lub wpisie. Można zrobić to na etapie edytowania strony."
 
-#: admin/views/cherry-widgets-page.php:74
+#: admin/views/cherry-widgets-page.php:85
 msgid "Create a new sidebar"
-msgstr ""
+msgstr "Utwórz nowy panel boczny."
 
 #~ msgid "Title"
 #~ msgstr "Tytuł"

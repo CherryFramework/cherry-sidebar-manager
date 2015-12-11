@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cherry-sidebar-manager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-30 13:04+0200\n"
-"PO-Revision-Date: 2015-10-30 13:04+0200\n"
+"POT-Creation-Date: 2015-12-11 15:54+0200\n"
+"PO-Revision-Date: 2015-12-11 15:54+0200\n"
 "Last-Translator: J.L.Dokter <jldokter@gmail.com>\n"
 "Language-Team: Cherry Team <support@cherryframework.com>\n"
 "Language: fr_FR\n"
@@ -20,23 +20,23 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: admin/views/cherry-sidebare-to-page.php:66
+#: admin/views/cherry-sidebare-to-page.php:75
 msgid "Post Sidebars"
 msgstr "Barres latérales d'article"
 
-#: admin/views/cherry-sidebare-to-page.php:112
+#: admin/views/cherry-sidebare-to-page.php:123
 msgid "Main Sidebar:"
 msgstr "Barre latérale principale"
 
-#: admin/views/cherry-sidebare-to-page.php:116
+#: admin/views/cherry-sidebare-to-page.php:128
 msgid "Secondary Sidebar:"
-msgstr ""
+msgstr "Barre latérale secondaire"
 
-#: admin/views/cherry-sidebare-to-page.php:121
+#: admin/views/cherry-sidebare-to-page.php:134
 msgid "Sidebar not selected"
 msgstr "Barre latérale non sélectionnée"
 
-#: admin/views/cherry-sidebare-to-page.php:147
+#: admin/views/cherry-sidebare-to-page.php:168
 #, php-format
 msgid ""
 "You can choose page sidebars or create a new sidebar on %swidgets page%s ."
@@ -44,43 +44,43 @@ msgstr ""
 "Vous pouvez choisir les barres laterals de la page ou créer une nouvelle "
 "barre latérale dans %swidgets page%s ."
 
-#: admin/views/cherry-sidebare-to-page.php:147
+#: admin/views/cherry-sidebare-to-page.php:168
 msgid "Widgets Page"
 msgstr "Page de Widgets "
 
-#: admin/views/cherry-widgets-page.php:19
+#: admin/views/cherry-widgets-page.php:30
 msgid "Create new custom sidebar."
 msgstr "Créer la nouvelle barre latérale personnalisée."
 
-#: admin/views/cherry-widgets-page.php:28
+#: admin/views/cherry-widgets-page.php:39
 msgid "Sidebar name:"
 msgstr "Nom de la barre latérale:"
 
-#: admin/views/cherry-widgets-page.php:41
+#: admin/views/cherry-widgets-page.php:52
 msgid "Sidebar description:"
 msgstr "Description de la barre latérale :"
 
-#: admin/views/cherry-widgets-page.php:49
+#: admin/views/cherry-widgets-page.php:60
 msgid "Create Sidebar"
 msgstr "Créer une barre latérale"
 
-#: admin/views/cherry-widgets-page.php:53
+#: admin/views/cherry-widgets-page.php:64
 msgid "Cannot add new custom sidebar"
 msgstr "Impossible d'ajouter la nouvelle barre latérale personnalisée"
 
-#: admin/views/cherry-widgets-page.php:61
+#: admin/views/cherry-widgets-page.php:72
 msgid "Default Sidebars"
 msgstr "Barres latérales par défaut"
 
-#: admin/views/cherry-widgets-page.php:64
+#: admin/views/cherry-widgets-page.php:75
 msgid "Default sidebars created in child theme code itself."
 msgstr "Barres latérales par défaut créées dans le code de thème fils."
 
-#: admin/views/cherry-widgets-page.php:70
+#: admin/views/cherry-widgets-page.php:81
 msgid "Cherry Custom Sidebars"
 msgstr "Barres latérales personnalisées de Cherry"
 
-#: admin/views/cherry-widgets-page.php:73
+#: admin/views/cherry-widgets-page.php:84
 msgid ""
 "You can create a custom sidebar yourself and enable if for any page or post. "
 "This can be done on page editing stage."
@@ -89,7 +89,7 @@ msgstr ""
 "activer pour toute page ou article. Cela peut être fait lors d'édition de la "
 "page."
 
-#: admin/views/cherry-widgets-page.php:74
+#: admin/views/cherry-widgets-page.php:85
 msgid "Create a new sidebar"
 msgstr "Créer une nouvelle barre latérale"
 

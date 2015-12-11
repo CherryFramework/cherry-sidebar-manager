@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cherry-sidebar-manager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-30 13:04+0200\n"
-"PO-Revision-Date: 2015-10-30 13:04+0200\n"
+"POT-Creation-Date: 2015-12-11 14:51+0200\n"
+"PO-Revision-Date: 2015-12-11 14:51+0200\n"
 "Last-Translator: J.L.Dokter <jldokter@gmail.com>\n"
 "Language-Team: Cherry Team <support@cherryframework.com>\n"
 "Language: ru\n"
@@ -20,23 +20,23 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: admin/views/cherry-sidebare-to-page.php:66
+#: admin/views/cherry-sidebare-to-page.php:75
 msgid "Post Sidebars"
 msgstr "Боковые колонки записей"
 
-#: admin/views/cherry-sidebare-to-page.php:112
+#: admin/views/cherry-sidebare-to-page.php:123
 msgid "Main Sidebar:"
 msgstr "Главная боковая колонка:"
 
-#: admin/views/cherry-sidebare-to-page.php:116
+#: admin/views/cherry-sidebare-to-page.php:128
 msgid "Secondary Sidebar:"
-msgstr ""
+msgstr "Дополнительная боковая панель:"
 
-#: admin/views/cherry-sidebare-to-page.php:121
+#: admin/views/cherry-sidebare-to-page.php:134
 msgid "Sidebar not selected"
 msgstr "Боковая колонка не выбрана"
 
-#: admin/views/cherry-sidebare-to-page.php:147
+#: admin/views/cherry-sidebare-to-page.php:168
 #, php-format
 msgid ""
 "You can choose page sidebars or create a new sidebar on %swidgets page%s ."
@@ -44,43 +44,43 @@ msgstr ""
 "Вы можете выбрать боковые колонки страницы или создать новую боковую колонку "
 "на %sстранице виджетов%s."
 
-#: admin/views/cherry-sidebare-to-page.php:147
+#: admin/views/cherry-sidebare-to-page.php:168
 msgid "Widgets Page"
 msgstr "Страница виджетов"
 
-#: admin/views/cherry-widgets-page.php:19
+#: admin/views/cherry-widgets-page.php:30
 msgid "Create new custom sidebar."
 msgstr "Создать новую пользовательскую боковую колонку"
 
-#: admin/views/cherry-widgets-page.php:28
+#: admin/views/cherry-widgets-page.php:39
 msgid "Sidebar name:"
 msgstr "Название боковой колонки:"
 
-#: admin/views/cherry-widgets-page.php:41
+#: admin/views/cherry-widgets-page.php:52
 msgid "Sidebar description:"
 msgstr "Описание боковой колонки:"
 
-#: admin/views/cherry-widgets-page.php:49
+#: admin/views/cherry-widgets-page.php:60
 msgid "Create Sidebar"
 msgstr "Создать боковую колонку"
 
-#: admin/views/cherry-widgets-page.php:53
+#: admin/views/cherry-widgets-page.php:64
 msgid "Cannot add new custom sidebar"
 msgstr "Невозможно добавить новую пользовательскую боковую колонку"
 
-#: admin/views/cherry-widgets-page.php:61
+#: admin/views/cherry-widgets-page.php:72
 msgid "Default Sidebars"
 msgstr "Боковые колонки по умолчанию"
 
-#: admin/views/cherry-widgets-page.php:64
+#: admin/views/cherry-widgets-page.php:75
 msgid "Default sidebars created in child theme code itself."
 msgstr "Боковые колонки по умолчанию, созданные в дочерней теме. "
 
-#: admin/views/cherry-widgets-page.php:70
+#: admin/views/cherry-widgets-page.php:81
 msgid "Cherry Custom Sidebars"
 msgstr "Пользовательские боковые колонки Cherry"
 
-#: admin/views/cherry-widgets-page.php:73
+#: admin/views/cherry-widgets-page.php:84
 msgid ""
 "You can create a custom sidebar yourself and enable if for any page or post. "
 "This can be done on page editing stage."
@@ -88,7 +88,7 @@ msgstr ""
 "Вы сами можете создать пользовательские боковые колонки и включить их для "
 "любой страницы или записи в режиме редактирования страниц/записей."
 
-#: admin/views/cherry-widgets-page.php:74
+#: admin/views/cherry-widgets-page.php:85
 msgid "Create a new sidebar"
 msgstr "Создать новую боковую колонку"
 
