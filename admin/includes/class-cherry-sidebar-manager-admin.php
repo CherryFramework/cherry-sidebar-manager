@@ -35,7 +35,7 @@ class Cherry_Custom_Sidebars_Admin {
 		// Load admin javascript and stylesheet.
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_admin_assets' ), 1 );
 
-		add_action( 'admin_init', array( $this, 'widgets_ajax_page' ) );
+		add_action( 'after_setup_theme', array( $this, 'widgets_ajax_page' ) );
 		add_action( 'sidebar_admin_setup', array( $this, 'registrates_custom_sidebar' ) );
 		add_action( 'widgets_admin_page', array( $this, 'edit_wp_registered_sidebars' ) );
 		add_action( 'sidebar_admin_page', array( $this, 'widgets_page' ) );
@@ -117,7 +117,6 @@ class Cherry_Custom_Sidebars_Admin {
 	 * @since  1.0.0
 	 */
 	public function widgets_ajax_page() {
-		require_once( trailingslashit( CHERRY_CUSTOM_SIDEBARS_DIR ) . 'admin/views/cherry-sidebare-to-page.php' );
 		require_once( trailingslashit( CHERRY_CUSTOM_SIDEBARS_DIR ) . 'admin/views/cherry-new-sidebar-manager.php' );
 	}
 

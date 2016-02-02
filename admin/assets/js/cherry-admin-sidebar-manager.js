@@ -1,5 +1,4 @@
 ( function( jQuery ) {
-
 	'use strict';
 
 	// Form Handling Module

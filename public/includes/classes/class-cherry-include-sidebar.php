@@ -27,19 +27,12 @@ if ( ! class_exists( 'Cherry_Include_Custom_Sidebar' ) ) {
 		private static $instance = null;
 
 		/**
-		 * Post sidebar list.
-		 *
-		 * @var null
-		 */
-		private $post_sidebars = null;
-
-		/**
 		 * Sets up our actions/filters.
 		 *
 		 * @since 1.0.0
 		 */
 		public function __construct() {
-			add_action( 'cherry_content', array( $this, 'set_custom_sidebar' ) );
+			add_filter( 'sidebars_widgets', array( $this, 'set_custom_sidebar' ), 10, 1 );
 		}
 
 		/**
@@ -47,67 +40,23 @@ if ( ! class_exists( 'Cherry_Include_Custom_Sidebar' ) ) {
 		 *
 		 * @since 1.0.0
 		 */
-		public function set_custom_sidebar() {
-			global $wp_registered_sidebars;
-
+		public function set_custom_sidebar( $widgets  ) {
 			$object_id = get_queried_object_id();
-			$this->post_sidebars = get_post_meta( apply_filters( 'cherry_sidebar_manager_object_id', $object_id ), 'post_sidebar', true );
+			$post_sidebars = get_post_meta( apply_filters( 'cherry_sidebar_manager_object_id', $object_id ), 'post_sidebar', true );
 
-			if ( is_array( $this->post_sidebars ) ) {
+			if ( $post_sidebars && !empty( $post_sidebars ) ) {
 
-				$Cherry_Custom_Sidebars_Methods = new Cherry_Custom_Sidebars_Methods();
-				$custom_sidebar_array = $Cherry_Custom_Sidebars_Methods->get_custom_sidebar_array();
-				unset( $custom_sidebar_array['cherry-sidebar-manager-counter'] );
+				$Custom_Sidebars_Methods = new Cherry_Custom_Sidebars_Methods();
+				$custom_sidebar = $Custom_Sidebars_Methods->get_custom_sidebar_array();
 
-				$wp_registered_sidebars = array_merge( $wp_registered_sidebars, $custom_sidebar_array );
-
-				add_filter( 'cherry_get_main_sidebar', array( $this, 'set_main_sidebar' ), 1, 1 );
-				add_filter( 'cherry_get_secondary_sidebar', array( $this, 'set_secondary_sidebar' ), 1, 1 );
-			}
-		}
-
-		/**
-		 * Set main sidebar in variable cherry_get_main_sidebar.
-		 *
-		 * @since 1.0.0
-		 * @param  string $sidebar  Current sidebar id.
-		 * @return string $sidebar  main sidebar id.
-		 */
-		public function set_main_sidebar( $sidebar ) {
-
-			if ( empty( $this->post_sidebars['cherry-post-main-sidebar'] ) ) {
-				return $sidebar;
+				foreach ( $post_sidebars as $sidebar => $sidebar_value ) {
+					if ( '' !==$sidebar_value && array_key_exists( $sidebar_value, $custom_sidebar ) && isset( $widgets[ $sidebar ] ) ) {
+						$widgets[ $sidebar ] = $widgets[ $sidebar_value ];
+					}
+				}
 			}
 
-			$new_sidebar = $this->post_sidebars['cherry-post-main-sidebar'];
-
-			if ( $new_sidebar ) {
-				$sidebar = $new_sidebar;
-			}
-
-			return $sidebar;
-		}
-
-		/**
-		 * Set main sidebar in variable cherry_get_secondary_sidebar.
-		 *
-		 * @since 1.0.0
-		 * @param  string $sidebar  Current sidebar id.
-		 * @return string $sidebar  Secondary sidebar id.
-		 */
-		public function set_secondary_sidebar( $sidebar ) {
-
-			if ( empty( $this->post_sidebars['cherry-post-secondary-sidebar'] ) ) {
-				return $sidebar;
-			}
-
-			$new_sidebar = $this->post_sidebars['cherry-post-secondary-sidebar'];
-
-			if ( $new_sidebar ) {
-				$sidebar = $new_sidebar;
-			}
-
-			return $sidebar;
+			return $widgets;
 		}
 
 		/**

@@ -1,7 +1,4 @@
 <?php
-
-// @codingStandardsIgnoreStart
-
 /**
  * Class for the building ui-text elements.
  *
@@ -40,9 +37,8 @@ if ( ! class_exists( 'UI_Text' ) ) {
 		function __construct( $args = array() ) {
 			$this->defaults_settings['id'] = 'cherry-ui-input-text-'.uniqid();
 			$this->settings = wp_parse_args( $args, $this->defaults_settings );
-			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_assets' ) );
 
-			self::enqueue_assets();
+			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_assets' ) );
 		}
 
 		/**
@@ -52,10 +48,11 @@ if ( ! class_exists( 'UI_Text' ) ) {
 		 */
 		public function render() {
 			$html = '';
+
 			if( '' !== $this->settings['label'] ){
-				$html .= '<div class="cherry-col-1"><label for="' . $this->settings['id'] . '">' . $this->settings['label'] . '</label></div> ';
+				$html .= '<label class="cherry-label" for="' . esc_attr( $this->settings['id'] ) . '">' . esc_html( $this->settings['label'] ) . '</label> ';
 			}
-			$html .= '<div class="cherry-col-2"><input type="' . $this->settings['type'] . '" id="' . $this->settings['id']  . '" class="widefat cherry-ui-text ' . $this->settings['class'] . '"  name="' . $this->settings['name'] . '"  value="' . esc_html( $this->settings['value'] ) . '" placeholder="' . $this->settings['placeholder'] . '"></div> ';
+			$html .= '<input type="' . esc_attr( $this->settings['type'] ) . '" id="' . esc_attr( $this->settings['id'] ) . '" class="widefat cherry-ui-text ' . esc_attr( $this->settings['class'] ) . '"  name="' . esc_attr( $this->settings['name'] ) . '"  value="' . esc_html( $this->settings['value'] ) . '" placeholder="' . esc_attr( $this->settings['placeholder'] ) . '">';
 
 			return $html;
 		}
@@ -99,5 +96,3 @@ if ( ! class_exists( 'UI_Text' ) ) {
 
 	}
 }
-
-// @codingStandardsIgnoreEnd

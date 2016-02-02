@@ -26,13 +26,13 @@ if ( ! function_exists( 'cherry_register_sidebar' ) ) {
 
 		// Set up some default sidebar arguments.
 		$defaults = array(
-			'id'            => '',
-			'name'          => '',
-			'description'   => '',
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</aside>',
-			'before_title'  => '<h3 class="widget-title">',
-			'after_title'   => '</h3>',
+			'id'			=> '',
+			'name'			=> '',
+			'description'	=> '',
+			'before_widget'	=> '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'	=> '</aside>',
+			'before_title'	=> '<h3 class="widget-title">',
+			'after_title'	=> '</h3>',
 		);
 
 		/**
@@ -104,6 +104,7 @@ function add_custom_sidebar() {
 		'name' => $form_data[0]['value'],
 		'id' => 'cherry-sidebar-manager-' . $id,
 		'description' => $form_data[1]['value'],
+		'dynamic-sidebar' => true,
 	);
 	$registrate_custom_sidebar = cherry_register_sidebar( $args );
 	$cusotm_sidebar_array[ 'cherry-sidebar-manager-' . $id ] = $wp_registered_sidebars[ $registrate_custom_sidebar ];
@@ -146,10 +147,14 @@ function remove_custom_sidebar() {
 
 	$id = isset( $_GET['id'] ) ? $_GET['id'] : $id ;
 
+	var_dump($id);
+
 	$Cherry_Custom_Sidebars_Methods = new Cherry_Custom_Sidebars_Methods();
 	$cusotm_sidebar_array = $Cherry_Custom_Sidebars_Methods->get_custom_sidebar_array();
-
+	var_dump($cusotm_sidebar_array);
 	unset( $cusotm_sidebar_array[ $id ] );
+
+	var_dump($cusotm_sidebar_array);
 
 	$Cherry_Custom_Sidebars_Methods->set_custom_sidebar_array( $cusotm_sidebar_array );
 }

@@ -18,9 +18,11 @@
 }
 #cherry-sidebar-manager-wrap{
 	margin-top: 10px;
-	h3{
-		padding: 10px 0;
-		margin: 0 10px 0 0;
+	.sidebar-manager-name{
+		h3{
+			padding: 10px 0;
+			margin: 0 10px 0 0;
+		}
 	}
 }
 #cherry-default-sidebars-title{
@@ -72,8 +74,10 @@
 }
 #create-new-sidebar-manager{
 	form#cherry-sidebar-manager-form{
+		border-top: 1px solid #d4d5d6;
 		.cherry-section{
 			padding: 15px;
+			border: none;
 			.cherry-col-1{
 				width:24%;
 				label {

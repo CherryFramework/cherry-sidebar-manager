@@ -3,7 +3,7 @@
  * Plugin Name: Cherry Sidebar Manager
  * Plugin URI:  http://www.cherryframework.com/
  * Description: Plugin for creating and managing sidebar in WordPress.
- * Version:     1.0.5.1
+ * Version:     1.1.0
  * Author:      Cherry Team
  * Author URI:  http://www.cherryframework.com/
  * Text Domain: cherry-sidebar-manager
@@ -41,6 +41,14 @@ if ( ! class_exists( 'Cherry_Custom_Sidebars' ) ) {
 		private static $instance = null;
 
 		/**
+		 * A reference to an instance of cherry framework core class.
+		 *
+		 * @since 1.1.0
+		 * @var   object
+		 */
+		private $core = null;
+
+		/**
 		 * Sets up needed actions/filters for the plugin to initialize.
 		 *
 		 * @since 1.0.0
@@ -48,16 +56,19 @@ if ( ! class_exists( 'Cherry_Custom_Sidebars' ) ) {
 		public function __construct() {
 
 			// Set the constants needed by the plugin.
-			add_action( 'plugins_loaded', array( $this, 'constants' ), 1 );
+			add_action( 'plugins_loaded', array( $this, 'constants' ), 0 );
+
+			// Load the core functions/classes required by the rest of the theme.
+			add_action( 'after_setup_theme', array( $this, 'get_core' ), 10 );
 
 			// Internationalize the text strings used.
-			add_action( 'plugins_loaded', array( $this, 'lang' ), 2 );
+			add_action( 'plugins_loaded', array( $this, 'lang' ), 3 );
 
 			// Load the functions files.
-			add_action( 'plugins_loaded', array( $this, 'includes' ), 3 );
+			add_action( 'plugins_loaded', array( $this, 'includes' ), 4 );
 
 			// Load the admin files.
-			add_action( 'plugins_loaded', array( $this, 'admin' ), 4 );
+			add_action( 'plugins_loaded', array( $this, 'admin' ), 5 );
 
 			// Register activation and deactivation hook.
 			register_activation_hook( __FILE__, array( $this, 'activation' ) );
@@ -132,6 +143,8 @@ if ( ! class_exists( 'Cherry_Custom_Sidebars' ) ) {
 		 */
 		function admin() {
 			if ( is_admin() ) {
+
+				require_once( trailingslashit( CHERRY_CUSTOM_SIDEBARS_DIR ) . 'admin/views/cherry-sidebare-to-page.php' );
 				require_once( CHERRY_CUSTOM_SIDEBARS_DIR . 'admin/includes/class-cherry-sidebar-manager-admin.php' );
 				require_once( CHERRY_CUSTOM_SIDEBARS_DIR . 'admin/includes/class-cherry-update/class-cherry-plugin-update.php' );
 
@@ -140,6 +153,52 @@ if ( ! class_exists( 'Cherry_Custom_Sidebars' ) ) {
 						'version'			=> CHERRY_CUSTOM_SIDEBARS_VERSION,
 						'slug'				=> CHERRY_CUSTOM_SIDEBARS_SLUG,
 						'repository_name'	=> CHERRY_CUSTOM_SIDEBARS_SLUG,
+				));
+			}
+		}
+
+		/**
+		 * Loads the core functions. These files are needed before loading anything else in the
+		 * theme because they have required functions for use.
+		 *
+		 * @since  1.1.0
+		 */
+		public function get_core() {
+			if ( is_admin() ) {
+				/**
+				 * Fires before loads the core theme functions.
+				 *
+				 * @since  1.1.0
+				 */
+				do_action( 'cherry_core_before' );
+
+				if ( null !== $this->core ) {
+					return $this->core;
+				}
+
+				if ( ! class_exists( 'Cherry_Core' ) ) {
+					require_once( CHERRY_CUSTOM_SIDEBARS_DIR . '/cherry-framework/cherry-core.php' );
+				}
+
+				$this->core = new Cherry_Core( array(
+					'base_dir'	=> CHERRY_CUSTOM_SIDEBARS_DIR . 'cherry-framework',
+					'base_url'	=> CHERRY_CUSTOM_SIDEBARS_URI . 'cherry-framework',
+					'modules'	=> array(
+						'cherry-api-js'	=> array(
+							'priority'	=> 999,
+							'autoload'	=> true,
+						),
+						'cherry-ui-elements' => array(
+							'priority'	=> 999,
+							'autoload'	=> true,
+							'args'		=> array(
+								'ui_elements' =>array(
+									'text',
+									'select',
+								),
+							),
+						),
+					),
 				));
 			}
 		}
