@@ -62,6 +62,10 @@ select.select2-hidden-accessible{
 						.select2-selection__choice__remove{
 						}
 					}
+					.select2-selection__clear{
+						margin-top: 8px;
+						margin-right: 5px;
+					}
 					.select2-search{
 						margin: 3px;
 						.select2-search__field{
@@ -70,6 +74,7 @@ select.select2-hidden-accessible{
 							border: none;
 							box-shadow: none;
 							line-height: 22px;
+							min-width: 120px;
 						}
 					}
 				}

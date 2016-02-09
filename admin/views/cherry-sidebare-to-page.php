@@ -120,11 +120,11 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar' ) ) {
 
 			foreach ( $wp_registered_sidebars as $sidebar => $sidebar_value ) {
 				if ( array_key_exists( 'dynamic-sidebar',$sidebar_value ) ) {
-					break;
+					continue;
 				}
 
-				if ( array_key_exists( 'is_global',$sidebar_value ) && !$sidebar_value['is_global'] ) {
-					break;
+				if ( array_key_exists( 'is_global',$sidebar_value ) && false === $sidebar_value['is_global'] ) {
+					continue;
 				}
 
 				$output = '<p><strong>' . $sidebar_value['name'] . '</strong></p>';
