@@ -184,7 +184,7 @@ if ( ! class_exists( 'Cherry_Custom_Sidebars' ) ) {
 					'base_dir'	=> CHERRY_CUSTOM_SIDEBARS_DIR . 'cherry-framework',
 					'base_url'	=> CHERRY_CUSTOM_SIDEBARS_URI . 'cherry-framework',
 					'modules'	=> array(
-						'cherry-api-js'	=> array(
+						'cherry-js-core'	=> array(
 							'priority'	=> 999,
 							'autoload'	=> true,
 						),

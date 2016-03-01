@@ -40,8 +40,15 @@ if ( ! class_exists( 'Cherry_Include_Custom_Sidebar' ) ) {
 		 *
 		 * @since 1.0.0
 		 */
-		public function set_custom_sidebar( $widgets  ) {
+		public function set_custom_sidebar( $widgets ) {
 			$object_id = get_queried_object_id();
+
+			if ( function_exists( 'is_shop' ) ) {
+				if ( is_shop() || is_tax( 'product_cat' ) || is_tax( 'product_tag' ) ) {
+					$object_id = wc_get_page_id( 'shop' );
+				}
+			}
+
 			$post_sidebars = get_post_meta( apply_filters( 'cherry_sidebar_manager_object_id', $object_id ), 'post_sidebar', true );
 
 			if ( $post_sidebars && !empty( $post_sidebars ) ) {

@@ -6,6 +6,9 @@ $min-desktop-width: 992px;
 	@content;
 	}
 }
+.cherry-ui-container{
+	margin: 10px 0 20px 0;
+}
 label.cherry-label{
 	margin: 0 0 5px 0;
 	display: block;
@@ -42,6 +45,7 @@ select.select2-hidden-accessible{
 			&.select2-selection--single{
 				height: 34px;
 				.select2-selection__rendered{
+					display: block;
 					font-size: 14px;
 					padding: 2px 20px 2px 9px;
 				}
@@ -62,6 +66,10 @@ select.select2-hidden-accessible{
 						.select2-selection__choice__remove{
 						}
 					}
+					.select2-selection__clear{
+						margin-top: 8px;
+						margin-right: 5px;
+					}
 					.select2-search{
 						margin: 3px;
 						.select2-search__field{
@@ -70,6 +78,7 @@ select.select2-hidden-accessible{
 							border: none;
 							box-shadow: none;
 							line-height: 22px;
+							//min-width: 120px;
 						}
 					}
 				}
