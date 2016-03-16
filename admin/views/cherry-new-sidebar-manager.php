@@ -147,14 +147,10 @@ function remove_custom_sidebar() {
 
 	$id = isset( $_GET['id'] ) ? $_GET['id'] : $id ;
 
-	var_dump($id);
-
 	$Cherry_Custom_Sidebars_Methods = new Cherry_Custom_Sidebars_Methods();
 	$cusotm_sidebar_array = $Cherry_Custom_Sidebars_Methods->get_custom_sidebar_array();
-	var_dump($cusotm_sidebar_array);
-	unset( $cusotm_sidebar_array[ $id ] );
 
-	var_dump($cusotm_sidebar_array);
+	unset( $cusotm_sidebar_array[ $id ] );
 
 	$Cherry_Custom_Sidebars_Methods->set_custom_sidebar_array( $cusotm_sidebar_array );
 }

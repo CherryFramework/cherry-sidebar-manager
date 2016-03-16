@@ -50,7 +50,6 @@ if ( ! class_exists( 'Cherry_Include_Custom_Sidebar' ) ) {
 			}
 
 			$post_sidebars = get_post_meta( apply_filters( 'cherry_sidebar_manager_object_id', $object_id ), 'post_sidebar', true );
-			//var_dump($post_sidebars);
 
 			if ( $post_sidebars && !empty( $post_sidebars ) ) {
 
@@ -58,9 +57,6 @@ if ( ! class_exists( 'Cherry_Include_Custom_Sidebar' ) ) {
 				$custom_sidebar = $Custom_Sidebars_Methods->get_custom_sidebar_array();
 
 				foreach ( $post_sidebars as $sidebar => $sidebar_value ) {
-				//var_dump($widgets);
-				//var_dump($sidebar);
-				//var_dump($sidebar_value);
 
 					if ( '' !== $sidebar_value && isset( $widgets[ $sidebar ] ) || false !== strripos( $sidebar_value, 'cherry-sidebar-manager') && array_key_exists( $sidebar_value, $custom_sidebar ) ) {
 						$widgets[ $sidebar ] = $widgets[ $sidebar_value ];

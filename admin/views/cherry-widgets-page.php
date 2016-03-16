@@ -74,7 +74,7 @@
 	</div>
 	<div id="cherry-sidebar-manager" class="sidebars-holder">
 		<p class="description cherry-default-description"><?php _e( 'You can create a custom sidebar yourself and enable if for any page or post. This can be done on page editing stage.', 'cherry-sidebar-manager' ); ?></p>
-		<span class="cherry-ui-core"><a class="thickbox button button-default_ btn-create-sidebar" href="#TB_inline?width=600&height=280&inlineId=new-sidebar-manager-wrap"><?php _e( 'Create a new sidebar', 'cherry-sidebar-manager' ); ?></a></span>
+		<span class="cherry-ui-core"><a class="thickbox button button-default_ btn-create-sidebar" href="#TB_inline?width=600&height=300&inlineId=new-sidebar-manager-wrap"><?php _e( 'Create a new sidebar', 'cherry-sidebar-manager' ); ?></a></span>
 
 		<div id="cherry-sidebar-manager-holder">
 			<div class="sidebars-column-1">
