@@ -75,8 +75,11 @@
 #create-new-sidebar-manager{
 	form#cherry-sidebar-manager-form{
 		border-top: 1px solid #d4d5d6;
+		.cherry-ui-container{
+			margin: 10px 0 0 0;
+		}
 		.cherry-section{
-			padding: 15px;
+			padding: 10px 15px;
 			border: none;
 			.cherry-col-1{
 				width:24%;
@@ -133,6 +136,9 @@
 	.spinner-wordpress-type-1.cherry-spinner-wordpress{
 		right: 12px;
 		bottom: 12px;
+	}
+	.widget.open{
+		margin-left: 0 !important;
 	}
 }
 body.widgets_access{

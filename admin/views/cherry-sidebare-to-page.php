@@ -58,7 +58,7 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar' ) ) {
 		 * @return void
 		 */
 		public function add_meta_boxes( $post_type, $post ) {
-			$allowed_post_type = apply_filters( 'cherry_sidebar_post_type', array( 'page', 'post', 'portfolio', 'testimonial', 'service', 'team' ) );
+			$allowed_post_type = apply_filters( 'cherry_sidebar_post_type', array( 'page', 'post', 'portfolio', 'testimonial', 'service', 'team', 'product', 'product',  ) );
 
 			if ( in_array( $post_type, $allowed_post_type )
 					&& ( current_user_can( 'edit_post_meta', $post->ID )
