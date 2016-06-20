@@ -64,6 +64,7 @@ if ( ! class_exists( 'Cherry_Custom_Sidebars' ) ) {
 			// Load the core functions/classes required by the rest of the theme.
 			add_action( 'after_setup_theme', array( $this, 'get_core' ), 1 );
 			add_action( 'after_setup_theme', array( 'Cherry_Core', 'load_all_modules' ), 2 );
+			add_action( 'after_setup_theme', array( $this, 'init_modules' ), 3 );
 
 			// Internationalize the text strings used.
 			add_action( 'plugins_loaded', array( $this, 'lang' ), 3 );
@@ -165,43 +166,52 @@ if ( ! class_exists( 'Cherry_Custom_Sidebars' ) ) {
 		 * Loads the core functions. These files are needed before loading anything else in the
 		 * theme because they have required functions for use.
 		 *
-		 * @since  1.1.0
+		 * @since 1.1.0
 		 */
 		public function get_core() {
-			if ( is_admin() ) {
-				/**
-				 * Fires before loads the core theme functions.
-				 *
-				 * @since  1.1.0
-				 */
-				do_action( 'cherry_core_before' );
+			/**
+			 * Fires before loads the core theme functions.
+			 *
+			 * @since  1.1.0
+			 */
+			do_action( 'cherry_core_before' );
 
-				if ( null !== $this->core ) {
-					return $this->core;
-				}
+			if ( null !== $this->core ) {
+				return $this->core;
+			}
 
-				if ( ! class_exists( 'Cherry_Core' ) ) {
-					require_once( CHERRY_CUSTOM_SIDEBARS_DIR . '/cherry-framework/cherry-core.php' );
-				}
+			if ( ! class_exists( 'Cherry_Core' ) ) {
+				require_once( CHERRY_CUSTOM_SIDEBARS_DIR . '/cherry-framework/cherry-core.php' );
+			}
 
-				$this->core = new Cherry_Core( array(
-					'base_dir' => CHERRY_CUSTOM_SIDEBARS_DIR . 'cherry-framework',
-					'base_url' => CHERRY_CUSTOM_SIDEBARS_URI . 'cherry-framework',
-					'modules'  => array(
-						'cherry-js-core' => array(
-							'autoload' => true,
-						),
-						'cherry-ui-elements' => array(
-							'autoload' => true,
-							'args'     => array(
-								'ui_elements' =>array(
-									'text',
-									'select',
-								),
-							),
-						),
+			$this->core = new Cherry_Core( array(
+				'base_dir' => CHERRY_CUSTOM_SIDEBARS_DIR . 'cherry-framework',
+				'base_url' => CHERRY_CUSTOM_SIDEBARS_URI . 'cherry-framework',
+				'modules'  => array(
+					'cherry-js-core' => array(
+						'autoload' => false,
 					),
-				));
+					'cherry-ui-elements' => array(
+						'autoload' => false,
+					),
+				),
+			));
+		}
+
+		/**
+		 * Run initialization of modules.
+		 *
+		 * @since 1.2.0
+		 */
+		public function init_modules() {
+			if ( is_admin() ) {
+				$this->get_core()->init_module( 'cherry-js-core' );
+				$this->get_core()->init_module( 'cherry-ui-elements', array(
+					'ui_elements' =>array(
+						'text',
+						'select',
+					),
+				) );
 			}
 		}
 
