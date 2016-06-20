@@ -58,8 +58,11 @@ if ( ! class_exists( 'Cherry_Custom_Sidebars' ) ) {
 			// Set the constants needed by the plugin.
 			add_action( 'plugins_loaded', array( $this, 'constants' ), 0 );
 
+			// Load the installer core.
+			// add_action( 'after_setup_theme', require( trailingslashit( __DIR__ ) . 'cherry-framework/setup.php' ), 0 );
+
 			// Load the core functions/classes required by the rest of the theme.
-			add_action( 'after_setup_theme', array( $this, 'get_core' ), 10 );
+			add_action( 'after_setup_theme', array( $this, 'get_core' ), 1 );
 
 			// Internationalize the text strings used.
 			add_action( 'plugins_loaded', array( $this, 'lang' ), 3 );
@@ -181,17 +184,15 @@ if ( ! class_exists( 'Cherry_Custom_Sidebars' ) ) {
 				}
 
 				$this->core = new Cherry_Core( array(
-					'base_dir'	=> CHERRY_CUSTOM_SIDEBARS_DIR . 'cherry-framework',
-					'base_url'	=> CHERRY_CUSTOM_SIDEBARS_URI . 'cherry-framework',
-					'modules'	=> array(
-						'cherry-js-core'	=> array(
-							'priority'	=> 999,
-							'autoload'	=> true,
+					'base_dir' => CHERRY_CUSTOM_SIDEBARS_DIR . 'cherry-framework',
+					'base_url' => CHERRY_CUSTOM_SIDEBARS_URI . 'cherry-framework',
+					'modules'  => array(
+						'cherry-js-core' => array(
+							'autoload' => true,
 						),
 						'cherry-ui-elements' => array(
-							'priority'	=> 999,
-							'autoload'	=> true,
-							'args'		=> array(
+							'autoload' => true,
+							'args'     => array(
 								'ui_elements' =>array(
 									'text',
 									'select',
