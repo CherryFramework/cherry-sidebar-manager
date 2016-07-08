@@ -117,7 +117,7 @@ function add_custom_sidebar() {
 		<div id="<?php echo esc_attr( 'cherry-sidebar-manager-' . $id ) ?>" class="widgets-sortables ui-sortable cherry-sidebar-manager">
 			<div class="sidebar-name">
 				<div class="sidebar-name-arrow"><br></div>
-				<h3><?php echo esc_html( $form_data[0]['value'] ) ?><span class="spinner"></span></h3>
+				<h2><?php echo esc_html( $form_data[0]['value'] ) ?><span class="spinner"></span></h2>
 			</div>
 			<div class="sidebar-description">
 				<p class="description"><?php echo esc_html( $form_data[1]['value'] ) ?></p>
