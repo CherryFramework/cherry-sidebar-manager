@@ -22,30 +22,16 @@
 	<h3><?php _e( 'Create new custom sidebar.', 'cherry-sidebar-manager' ); ?></h3>
 	<form id="cherry-sidebar-manager-form" class="cherry-ui-core" method="post">
 		<div class="cherry-section">
-			<?php
-				$ui_text = new UI_Text(
-					array(
-						'id'			=> 'sidebar-manager-name',
-						'name'			=> 'sidebar-manager-name',
-						'class'			=> 'required',
-						'label'			=> __( 'Sidebar name:', 'cherry-sidebar-manager' ),
-					)
-				);
-				echo $ui_text->render();
-			?>
+			<div class="cherry-ui-container">
+				<label class="cherry-label"><?php echo __( 'Sidebar name:', 'cherry-sidebar-manager' ) ?></label>
+				<input type="text" id="sidebar-manager-name" class="widefat cherry-ui-text required" name="sidebar-manager-name" value="" placeholder="">
+			</div>
 		</div>
 		<div class="cherry-section">
-			<?php
-				$ui_text = new UI_Text(
-					array(
-						'id'			=> 'sidebar-manager-description',
-						'name'			=> 'sidebar-manager-description',
-						'class'			=> 'required',
-						'label'			=> __( 'Sidebar description:', 'cherry-sidebar-manager' ),
-					)
-				);
-				echo $ui_text->render();
-			?>
+			<div class="cherry-ui-container">
+				<label class="cherry-label"><?php echo __( 'Sidebar description:', 'cherry-sidebar-manager' ) ?></label>
+				<input type="text" id="sidebar-manager-description" class="widefat cherry-ui-text required" name="sidebar-manager-description" value="" placeholder="">
+			</div>
 		</div>
 		<div class="cherry-section">
 			<?php
