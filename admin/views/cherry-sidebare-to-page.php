@@ -127,23 +127,21 @@ if ( ! class_exists( 'Cherry_Custom_Sidebar' ) ) {
 					continue;
 				}
 
-				$output = '<p><strong>' . $sidebar_value['name'] . '</strong></p>';
+				$html = '<div class="cherry-ui-container">';
+					$html .= '<label class="cherry-label" for="' . esc_attr( $sidebar_value['id'] ) . '">' . $sidebar_value['name'] . '</label> ';
+					$value = ( is_array( $select_sidebar ) && array_key_exists( $sidebar_value['id'], $select_sidebar ) ) ? $select_sidebar[ $sidebar_value['id'] ] : '' ;
+					$html .= '<select id="' . esc_attr( $sidebar_value['id'] ) . '" class="cherry-ui-select" name="theme_sidebar[' . $sidebar_value['id'] . ']" size="1"  placeholder="Select" style="width: 100%">';
+							if ( $select_options && ! empty( $select_options ) && is_array( $select_options ) ) {
+								foreach ( $select_options as $option => $option_value ) {
+									$selected_state = selected( $value, $option, false );
+									$selected_state = $selected_state ? ' selected="selected"' : '';
+									$html .= '<option value="' . esc_attr( $option ) . '" ' . $selected_state . '>'. esc_html( $option_value ) .'</option>';
+								}
+							}
+					$html .= '</select>';
+				$html .= '</div>';
 
-				$value = ( is_array( $select_sidebar ) && array_key_exists( $sidebar_value['id'], $select_sidebar ) ) ? $select_sidebar[ $sidebar_value['id'] ] : '' ;
-
-				$UI_Select = new UI_Select(
-					array(
-						'id' => $sidebar_value['id'],
-						'name' => 'theme_sidebar[' . $sidebar_value['id'] . ']',
-						'value' => $value,
-						'options' => $select_options,
-
-					)
-				);
-
-				$output .= $UI_Select->render();
-
-				echo $output;
+				echo $html;
 			};
 
 			?>
